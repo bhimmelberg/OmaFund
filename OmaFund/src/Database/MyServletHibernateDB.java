@@ -13,7 +13,7 @@ import util.UtilDB;
 
 @WebServlet("/MyServletHibernateDB")
 public class MyServletHibernateDB extends HttpServlet {
-   private static final long serialVersionUID = 1L;
+   private static final long serialVersionUID = 1L; 
 
    public MyServletHibernateDB() {
       super();
