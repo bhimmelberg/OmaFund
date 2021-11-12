@@ -5,14 +5,25 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+import java.io.IOException;  //not pppp
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import Database.DBConnection;
 
+
+//pupu
+
+/**
+ * Servlet implementation class Home
+ */
+
+@SuppressWarnings("unused")
 @WebServlet("/Home")
 public class Home extends HttpServlet {
    private static final long serialVersionUID = 1L;
