@@ -74,7 +74,6 @@ public class Home extends HttpServlet {
             out.println("Age: " + age + "<br><br>");
 
          }
-         out.println("Total Cost: $" + totalCost + "<br><br>");
          out.println("<a href=/OmaFund/signUp.html>Sign Up</a> <br>");
          out.println("</body></html>");
          rs.close();

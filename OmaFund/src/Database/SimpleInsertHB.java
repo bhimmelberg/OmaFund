@@ -28,7 +28,7 @@ public class SimpleInsertHB extends HttpServlet implements Info {
       String address = request.getParameter("address").trim();
       String price = request.getParameter("price").trim();
 
-      UtilDB.createEmployees(item, firstName, lastName, phone, address, price);
+      //UtilDB.createEmployees(item, firstName, lastName, phone, address, price);
 
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
