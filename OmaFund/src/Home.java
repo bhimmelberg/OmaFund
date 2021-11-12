@@ -74,10 +74,7 @@ public class Home extends HttpServlet {
             out.println("Age: " + age + "<br><br>");
 
          }
-<<<<<<< HEAD
          out.println("Total Cost: $" + totalCost + "<br><br>");
-=======
->>>>>>> branch 'master' of git@github.com:bhimmelberg/OmaFund.git
          out.println("<a href=/OmaFund/signUp.html>Sign Up</a> <br>");
          out.println("</body></html>");
          rs.close();
