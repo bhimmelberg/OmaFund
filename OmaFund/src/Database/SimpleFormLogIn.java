@@ -18,7 +18,7 @@ public class SimpleFormLogIn extends HttpServlet {
 
    public SimpleFormLogIn() {
       super();
-   }
+   } 
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       String userNameEntry = request.getParameter("userName");
