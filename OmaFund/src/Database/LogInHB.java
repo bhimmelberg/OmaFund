@@ -1,3 +1,4 @@
+package Database;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,11 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import util.Info;
 import util.UtilDB;
 
-@WebServlet("/SimpleInsertHB")
-public class SimpleInsertHB extends HttpServlet implements Info {
+@WebServlet("/LogInHB")
+public class LogInHB extends HttpServlet implements Info {
    private static final long serialVersionUID = 1L;
 
-   public SimpleInsertHB() {
+   public LogInHB() {
       super();
    }
 

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 
-import java.io.IOException;  //not pppp
+import java.io.IOException;
 
 import java.io.IOException;
 
@@ -83,7 +83,7 @@ public class Home extends HttpServlet {
 
          }
          out.println("Total Cost: $" + totalCost + "<br><br>");
-         out.println("<a href=/shoppinglist/add_item.html>Add New Items</a> <br>");
+         out.println("<a href=/OmaFund/signUp.html>Sign Up</a> <br>");
          out.println("</body></html>");
          rs.close();
          preparedStatement.close();
