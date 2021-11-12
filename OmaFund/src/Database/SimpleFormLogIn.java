@@ -76,7 +76,7 @@ public class SimpleFormLogIn extends HttpServlet {
             {
             	//logged in
             	System.out.println("You Are Logged In!");
-            	out.println("<meta http-equiv=\"refresh\" content=\"0; /OmaFund/home.html\" />");
+            	out.println("<meta http-equiv=\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
             }
          }
          out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
