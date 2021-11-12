@@ -46,8 +46,12 @@ public class SimpleFormLogIn extends HttpServlet {
 
          if (userNameEntry.isEmpty()) {
         	 //Do Nothing
-            String selectSQL = "SELECT * FROM myTable";
-            preparedStatement = connection.prepareStatement(selectSQL);
+        	 String emptyError = "Error: Username cannot be empty";
+        	 out.println("<html>\n" + //
+        	            "<head><title>" + emptyError + "</title></head>\n" + //
+        	            "<body bgcolor=\"#f0f0f0\">\n" + //
+        	            "<h1 align=\"center\">" + emptyError + "</h1>\n");
+        	 out.println("<a href=/OmaFund/simpleFormLogin.html>Log in</a> <br>");
          } else {
             String selectSQL = "SELECT * FROM myTable WHERE MYUSER LIKE ?";
             String theUserName = userNameEntry + "%";
