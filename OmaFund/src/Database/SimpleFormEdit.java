@@ -114,13 +114,13 @@ public class SimpleFormEdit extends HttpServlet {
 	         }
 	         
 	         
-	         
+	         out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
 	         connection.close();
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
 //	      out.println("<meta http-equiv=\"refresh\" content=\"0; /OmaFund/logIn.html\" />");
-	      out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
+	     // out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
 //	      out.println("</body></html>");
       }
    }
