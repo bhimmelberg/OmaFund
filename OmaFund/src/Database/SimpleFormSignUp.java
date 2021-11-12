@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import util.Info;
 import util.UtilDB;
 
-@WebServlet("/SimpleInsertHB")
-public class SimpleInsertHB extends HttpServlet implements Info {
+@WebServlet("/SimpleFormSignUp")
+public class SimpleFormSignUp extends HttpServlet implements Info {
    private static final long serialVersionUID = 1L;
 
-   public SimpleInsertHB() {
+   public SimpleFormSignUp() {
       super();
    }
 
