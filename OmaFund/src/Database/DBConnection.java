@@ -20,9 +20,7 @@ public class DBConnection {
       connection = null;
       try {
          UtilProp.loadProperty();
-         //connection = DriverManager.getConnection(getURL(), getUserName(), getPassword());
-         connection = DriverManager.getConnection("jdbc:mysql://ec2-3-135-240-102.us-east-2.compute.amazonaws.com:3306/OmaFund?enabledTLSProtocols=TLSv1.2", 
-        	 "bhimmelremote", "Ellamae2001!");
+         connection = DriverManager.getConnection(getURL(), getUserName(), getPassword());
       } catch (Exception e) {
          System.out.println("Connection Failed! Check output console");
          e.printStackTrace();
