@@ -29,7 +29,7 @@ public class SimpleFormLogIn extends HttpServlet {
    void search(String userNameEntry, String passwordEntry, HttpServletResponse response) throws IOException {
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
-      String title = "Database Result";
+      String title = "User Name Cannot be Empty";
       String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
             "transitional//en\">\n"; //
       out.println(docType + //
@@ -45,9 +45,19 @@ public class SimpleFormLogIn extends HttpServlet {
          connection = DBConnection.connection;
 
          if (userNameEntry.isEmpty()) {
+        	 String back = "Log In";
+        	 out.println("<a href=/OmaFund/logIn.html");
+             String doc = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
+                   "transitional//en\">\n"; //
+             out.println(doc + //
+                   "<html>\n" + //
+                   "<head><title>" + back + "</title></head>\n" + //
+                   "<body bgcolor=\"#f0f0f0\">\n" + //
+                   "<h1 align=\"center\">" + back + "</h1>\n");
+        	 
         	 //Do Nothing
-            String selectSQL = "SELECT * FROM myTable";
-            preparedStatement = connection.prepareStatement(selectSQL);
+           // String selectSQL = "SELECT * FROM myTable";
+          //  preparedStatement = connection.prepareStatement(selectSQL);
          } else {
             String selectSQL = "SELECT * FROM myTable WHERE MYUSER LIKE ?";
             String theUserName = userNameEntry + "%";
