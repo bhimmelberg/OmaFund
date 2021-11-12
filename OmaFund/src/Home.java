@@ -7,17 +7,17 @@ import java.sql.SQLException;
 
 
 import java.io.IOException;  //not pppp
+
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 import Database.DBConnection;
 
-
-//pupu
 
 /**
  * Servlet implementation class Home
@@ -74,7 +74,7 @@ public class Home extends HttpServlet {
             out.println("Age: " + age + "<br><br>");
 
          }
-         out.println("<a href=/shoppinglist/add_item.html>Add New Items</a> <br>");
+         out.println("<a href=/OmaFund/signUp.html>Sign Up</a> <br>");
          out.println("</body></html>");
          rs.close();
          preparedStatement.close();
