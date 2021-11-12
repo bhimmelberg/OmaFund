@@ -18,7 +18,7 @@ public class SimpleFormLogIn extends HttpServlet {
 
    public SimpleFormLogIn() {
       super();
-   } 
+   }
 
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       String userNameEntry = request.getParameter("userName");
@@ -29,7 +29,7 @@ public class SimpleFormLogIn extends HttpServlet {
    void search(String userNameEntry, String passwordEntry, HttpServletResponse response) throws IOException {
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
-      String title = "User Name Cannot be Empty";
+      String title = "Database Result";
       String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
             "transitional//en\">\n"; //
       out.println(docType + //
@@ -44,19 +44,8 @@ public class SimpleFormLogIn extends HttpServlet {
          DBConnection.getDBConnection();
          connection = DBConnection.connection;
 
-
          if (userNameEntry.isEmpty() || passwordEntry.isEmpty()) {
-
-         if (userNameEntry.isEmpty()) {
-        	 String back = "Log In";
-        	 out.println("<a href=/OmaFund/logIn.html");
-             String doc = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
-                   "transitional//en\">\n"; //
-             out.println(doc + //
-                   "<html>\n" + //
-                   "<head><title>" + back + "</title></head>\n" + //
-                   "<body bgcolor=\"#f0f0f0\">\n" + //
-                   "<h1 align=\"center\">" + back + "</h1>\n");
+        	 //Do Nothing
          } else {
             String selectSQL = "SELECT * FROM UserInfo WHERE username LIKE ? AND password LIKE ?";
             String theUserName = userNameEntry;
