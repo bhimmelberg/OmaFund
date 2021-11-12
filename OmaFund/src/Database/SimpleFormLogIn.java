@@ -54,7 +54,8 @@ public class SimpleFormLogIn extends HttpServlet {
                    "<h1 align=\"center\">" + error + "</h1>\n");
              out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
              out.println("<a href=/OmaFund/home.html>Home</a> <br>");
-         } else {
+         }
+         else {
             String selectSQL = "SELECT * FROM UserInfo WHERE username LIKE ? AND password LIKE ?";
             String theUserName = userNameEntry;
             String thePassword = passwordEntry;
@@ -69,14 +70,16 @@ public class SimpleFormLogIn extends HttpServlet {
             String password = rs.getString("password").trim();
             
             //SAVED ID NUMBER WE NEED FOR REST OF STUFF
-            int idNum = rs.getInt("id");
+            DBConnection.setID(rs.getInt("id"));
 
             if (userName.equals(userNameEntry) && password.equals(passwordEntry))
             {
             	//logged in
+            	System.out.println("You Are Logged In!");
+            	out.println("<meta http-equiv=\"refresh\" content=\"0; /OmaFund/home.html\" />");
             }
          }
-         out.println("<a href=/webproject/simpleFormSearch.html>Search Data</a> <br>");
+         out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
          out.println("</body></html>");
          rs.close();
          preparedStatement.close();

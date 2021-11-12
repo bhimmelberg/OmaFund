@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 
 public class DBConnection {
    public static Connection connection = null;
+   private static int userID = -1;
 
    public static void getDBConnection() {
       System.out.println("-------- MySQL JDBC Connection Testing ------------");
@@ -49,5 +50,13 @@ public class DBConnection {
       String pwd = UtilProp.getProp("password");
       System.out.println("[DBG] URL: " + pwd);
       return pwd;
+   }
+   
+   static void setID(int id) {
+	   userID = id;
+   }
+   
+   static int getID() {
+	   return userID;
    }
 }
