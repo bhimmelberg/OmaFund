@@ -46,6 +46,15 @@ public class SimpleFormLogIn extends HttpServlet {
 
          if (userNameEntry.isEmpty() || passwordEntry.isEmpty()) {
         	 //Do Nothing
+        	 String error = "User Name or Password Cannot be Empty!";
+        	 
+             out.println(docType + //
+                   "<html>\n" + //
+                   "<head><title>" + error + "</title></head>\n" + //
+                   "<body bgcolor=\"#f0f0f0\">\n" + //
+                   "<h1 align=\"center\">" + error + "</h1>\n");
+             out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
+             out.println("<a href=/OmaFund/home.html>Home</a> <br>");
          } else {
             String selectSQL = "SELECT * FROM UserInfo WHERE username LIKE ? AND password LIKE ?";
             String theUserName = userNameEntry;
