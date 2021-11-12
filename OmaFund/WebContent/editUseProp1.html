@@ -2,7 +2,7 @@
 <head>
 <style>
 header {
-    background-color:skyblue;
+    background-color:white;
     color:black;
     text-align:center;
     padding:5px;	 
@@ -22,8 +22,11 @@ section {
     padding:10px;	 	 
 }
 footer {
+    position:absolute;
+	bottom:0;
+	width:100%;
     background-color:black;
-    color:skyblue;
+    color:white;
     clear:both;
     text-align:center;
     padding:5px;	 	 
@@ -33,18 +36,22 @@ footer {
 
 <body>
 <header>
-<h1> Edit User </h1>
+<img src="/OmaFund/images/OmaFundLogo.PNG">
 </header>
 
 <nav>
-<a href="/OmaFund/logIn.html">Log In</a> <br>
-<a href="/OmaFund/home.html">Home</a> <br>
+<form action="/OmaFund/logIn.html">
+    <input type="submit" value="Log In" />
+</form>
+<form action="/OmaFund/home.html">
+    <input type="submit" value="Home" />
+</form>
 </nav>
 
 <section>
-	<h1>Sign up to get started with OmaFund</h1>
+	<h1>Edit Account Information</h1>
 	
-	<form action="SimpleFormSignUp" method="POST">
+	<form action="SimpleFormEdit" method="POST">
 	
 		User Name: <input type="text" name="userName"> <br />
 		Password: <input type="password" name="password"> <br />

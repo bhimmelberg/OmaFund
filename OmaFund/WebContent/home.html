@@ -8,7 +8,7 @@ header {
     padding:5px;	 
 }
 nav {
-    background-color:grey;
+    background-color:white;
     color:skyblue;
     text-align:center;
     padding:5px;	      
@@ -17,9 +17,12 @@ section {
     width:550px;
     float:left;
     text-align:center;
-    padding:10px;	 	 
+    padding:20px;	 	 
 }
 footer {
+    position:absolute;
+	bottom:0;
+	width:100%;
     background-color:black;
     color:white;
     clear:both;
@@ -32,12 +35,16 @@ footer {
 <body>
 <header>
 <img src="/OmaFund/images/OmaFundLogo.PNG">
-
 </header>
 
 <nav>
-<a href="/OmaFund/logIn.html">Log In</a> <br>
-<a href="/OmaFund/signUp.html">Sign Up</a> <br>
+<form action="/OmaFund/logIn.html">
+    <input type="submit" value="Log In" />
+</form>
+
+<form action="/OmaFund/signUp.html">
+    <input type="submit" value="Sign Up" />
+</form>
 </nav>
 
 
