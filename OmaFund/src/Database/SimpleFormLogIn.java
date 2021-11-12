@@ -44,37 +44,37 @@ public class SimpleFormLogIn extends HttpServlet {
          DBConnection.getDBConnection();
          connection = DBConnection.connection;
 
-         if (userNameEntry.isEmpty()) {
-        	 //Do Nothing
-        	 String emptyError = "Error: Username cannot be empty";
-        	 out.println("<html>\n" + //
-        	            "<head><title>" + emptyError + "</title></head>\n" + //
-        	            "<body bgcolor=\"#f0f0f0\">\n" + //
-        	            "<h1 align=\"center\">" + emptyError + "</h1>\n");
-        	 out.println("<a href=/OmaFund/simpleFormLogin.html>Log in</a> <br>");
+         if (userNameEntry.isEmpty() || passwordEntry.isEmpty()) {
+        	 String error = "User Name or Password Cannot be Empty!";
+        	 
+             out.println(docType + //
+                   "<html>\n" + //
+                   "<head><title>" + error + "</title></head>\n" + //
+                   "<body bgcolor=\"#f0f0f0\">\n" + //
+                   "<h1 align=\"center\">" + error + "</h1>\n");
+             out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
+             out.println("<a href=/OmaFund/home.html>Home</a> <br>");
          } else {
-            String selectSQL = "SELECT * FROM myTable WHERE MYUSER LIKE ?";
-            String theUserName = userNameEntry + "%";
+            String selectSQL = "SELECT * FROM UserInfo WHERE username LIKE ? AND password LIKE ?";
+            String theUserName = userNameEntry;
+            String thePassword = passwordEntry;
             preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, theUserName);
+            preparedStatement.setString(2, thePassword);
          }
          ResultSet rs = preparedStatement.executeQuery();
 
          while (rs.next()) {
             String userName = rs.getString("userName").trim();
             String password = rs.getString("password").trim();
+            
+            //SAVED ID NUMBER WE NEED FOR REST OF STUFF
+            int idNum = rs.getInt("id");
 
             if (userName.equals(userNameEntry) && password.equals(passwordEntry))
             {
             	//logged in
             }
-            
-//            if (keyword.isEmpty() || userName.contains(keyword)) {
-//               out.println("ID: " + id + ", ");
-//               out.println("User: " + userName + ", ");
-//               out.println("Email: " + email + ", ");
-//               out.println("Phone: " + phone + "<br>");
-//            }
          }
          out.println("<a href=/webproject/simpleFormSearch.html>Search Data</a> <br>");
          out.println("</body></html>");
