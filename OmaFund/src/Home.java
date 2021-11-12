@@ -54,36 +54,27 @@ public class Home extends HttpServlet {
          DBConnection.getDBConnection();
          connection = DBConnection.connection;
          //Order the table alphabetically based on store
-         String selectSQL = "SELECT * FROM list ORDER BY Store";
+         String selectSQL = "SELECT * FROM UserInfo";
          preparedStatement = connection.prepareStatement(selectSQL);
          ResultSet rs = preparedStatement.executeQuery();
-         //Variable to hold total cost of specific item
-         double itemCost = 0.0;
-         //Variable to hold cost of all items
-         double totalCost = 0.0;
          
          while (rs.next()) {
-            String item = rs.getString("item").trim();
-            int quantity = rs.getInt("quantity");
-            String price = rs.getString("price").trim();
-            String department = rs.getString("department").trim();
-            String store = rs.getString("store").trim();
-            double myPrice = Double.parseDouble(price);
-            //Get cost of current item
-            itemCost = myPrice * quantity;
-            //Add to total cost
-            totalCost = totalCost + itemCost;
+            String username = rs.getString("username").trim();
+            String password = rs.getString("password").trim();
+            String email = rs.getString("email").trim();
+            String first = rs.getString("first").trim();
+            String last = rs.getString("last").trim();
+            int age = rs.getInt("age");
             
-            out.println("Item: " + item + " | ");
-            out.println("Quantity: " + quantity + " | ");
-            out.println("Price Per Item: $" + price + " | ");
-            out.println("Store Department: " + department + " | ");
-            out.println("Store: " + store + " | ");
-            out.println("Cost of Item: $" + itemCost + "<br><br>");
+            out.println("Username: " + username + " | ");
+            out.println("Password: " + password + " | ");
+            out.println("Email:" + email + " | ");
+            out.println("First Name: " + first + " | ");
+            out.println("Last Name: " + last + " | ");
+            out.println("Age: " + age + "<br><br>");
 
          }
-         out.println("Total Cost: $" + totalCost + "<br><br>");
-         out.println("<a href=/shoppinglist/add_item.html>Add New Items</a> <br>");
+         out.println("<a href=/OmaFund/signUp.html>Sign Up</a> <br>");
          out.println("</body></html>");
          rs.close();
          preparedStatement.close();
