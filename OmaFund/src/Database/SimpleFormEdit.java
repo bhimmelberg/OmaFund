@@ -113,7 +113,15 @@ public class SimpleFormEdit extends HttpServlet {
 	        	preparedStmt.execute();
 	         }
 	         
-	         
+	         String error = "Gotta Edit Som'n";
+	    	  
+	    	  String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
+	    	            "transitional//en\">\n";
+	          out.println(docType + //
+	                "<html>\n" + //
+	                "<head><title>" + error + "</title></head>\n" + //
+	                "<body bgcolor=\"#f0f0f0\">\n" + //
+	                "<h1 align=\"center\">" + error + "</h1>\n");
 	         out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
 	         connection.close();
 	      } catch (Exception e) {
