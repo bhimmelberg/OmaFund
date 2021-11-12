@@ -26,6 +26,7 @@ public class SimpleFormSignUp extends HttpServlet {
 	  PrintWriter out = response.getWriter();
 	  String userName = request.getParameter("userName");
       String password = request.getParameter("password");
+      String email = request.getParameter("email");
       String firstName = request.getParameter("firstName");
       String lastName = request.getParameter("lastName");
       int age;
@@ -37,7 +38,7 @@ public class SimpleFormSignUp extends HttpServlet {
       {
     	  age = 0;
       }
-      String email = request.getParameter("email");
+      
       
       if (userName.equals("") || password.equals("") || firstName.equals("") 
     		  || lastName.equals("") || (age == 0) ||  email.equals(""))

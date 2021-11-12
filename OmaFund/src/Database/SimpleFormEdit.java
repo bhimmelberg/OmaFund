@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/SimpleFormSignUp")
+@WebServlet("/SimpleFormEdit")
 public class SimpleFormEdit extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -26,6 +26,7 @@ public class SimpleFormEdit extends HttpServlet {
 	  PrintWriter out = response.getWriter();
 	  String userName = request.getParameter("userName");
       String password = request.getParameter("password");
+      String email = request.getParameter("email");
       String firstName = request.getParameter("firstName");
       String lastName = request.getParameter("lastName");
       int age;
@@ -37,7 +38,6 @@ public class SimpleFormEdit extends HttpServlet {
       {
     	  age = 0;
       }
-      String email = request.getParameter("email");
       
       if (userName.equals("") && password.equals("") && firstName.equals("") 
     		  && lastName.equals("") && (age == 0) &&  email.equals(""))
@@ -74,19 +74,43 @@ public class SimpleFormEdit extends HttpServlet {
 	         }
 	         if(password != "")
 	         {
-	        	 
+	        	String insertSql = "UPDATE UserInfo SET password = ? WHERE id = ?";
+	        	PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
+	        	preparedStmt.setString(1, password);
+	        	preparedStmt.setInt(2, DBConnection.getID());
+	        	preparedStmt.execute();
+	         }
+	         if(email != "")
+	         {
+	        	 String insertSql = "UPDATE UserInfo SET email = ? WHERE id = ?";
+	        	PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
+	        	preparedStmt.setString(1, email);
+	        	preparedStmt.setInt(2, DBConnection.getID());
+	        	preparedStmt.execute();
 	         }
 	         if(firstName != "")
 	         {
-	        	 
+	        	 String insertSql = "UPDATE UserInfo SET first = ? WHERE id = ?";
+	        	PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
+	        	preparedStmt.setString(1, firstName);
+	        	preparedStmt.setInt(2, DBConnection.getID());
+	        	preparedStmt.execute();
 	         }
 	         if(lastName != "")
 	         {
-	        	 
+	        	 String insertSql = "UPDATE UserInfo SET last = ? WHERE id = ?";
+	        	PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
+	        	preparedStmt.setString(1, lastName);
+	        	preparedStmt.setInt(2, DBConnection.getID());
+	        	preparedStmt.execute();
 	         }
 	         if(age != 0)
 	         {
-	        	 
+	        	String insertSql = "UPDATE UserInfo SET age = ? WHERE id = ?";
+	        	PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
+	        	preparedStmt.setInt(1, age);
+	        	preparedStmt.setInt(2, DBConnection.getID());
+	        	preparedStmt.execute();
 	         }
 	         
 	         
@@ -96,7 +120,7 @@ public class SimpleFormEdit extends HttpServlet {
 	         e.printStackTrace();
 	      }
 //	      out.println("<meta http-equiv=\"refresh\" content=\"0; /OmaFund/logIn.html\" />");
-	      out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
+	      out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
 //	      out.println("</body></html>");
       }
    }
