@@ -42,7 +42,7 @@ public class SimpleFormEdit extends HttpServlet {
       if (userName.equals("") && password.equals("") && firstName.equals("") 
     		  && lastName.equals("") && (age == 0) &&  email.equals(""))
       {
-    	  String error = "Gotta Edit Som'n";
+    	 /* String error = "Gotta Edit Som'n";
     	  
     	  String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
     	            "transitional//en\">\n";
@@ -50,7 +50,7 @@ public class SimpleFormEdit extends HttpServlet {
                 "<html>\n" + //
                 "<head><title>" + error + "</title></head>\n" + //
                 "<body bgcolor=\"#f0f0f0\">\n" + //
-                "<h1 align=\"center\">" + error + "</h1>\n");
+                "<h1 align=\"center\">" + error + "</h1>\n");*/
           out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
       }
       else
@@ -113,7 +113,7 @@ public class SimpleFormEdit extends HttpServlet {
 	        	preparedStmt.execute();
 	         }
 	         
-	         String error = "Gotta Edit Som'n";
+	         /*String error = "Gotta Edit Som'n";
 	    	  
 	    	  String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
 	    	            "transitional//en\">\n";
@@ -121,8 +121,9 @@ public class SimpleFormEdit extends HttpServlet {
 	                "<html>\n" + //
 	                "<head><title>" + error + "</title></head>\n" + //
 	                "<body bgcolor=\"#f0f0f0\">\n" + //
-	                "<h1 align=\"center\">" + error + "</h1>\n");
-	         out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
+	                "<h1 align=\"center\">" + error + "</h1>\n");*/
+	          
+	         out.println("<meta http-equiv =\"refresh\" content=\"1; /OmaFund/youIn.html\" />");
 	         connection.close();
 	      } catch (Exception e) {
 	         e.printStackTrace();
