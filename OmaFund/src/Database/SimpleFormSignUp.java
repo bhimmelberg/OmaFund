@@ -75,9 +75,8 @@ public class SimpleFormSignUp extends HttpServlet {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      
-	      out.println("<meta http-equiv=\"refresh\" content=\"0; /OmaFund/logIn.html\" />");
-//	      out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
+//	      out.println("<meta http-equiv=\"refresh\" content=\"0; /OmaFund/logIn.html\" />");
+	      out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
 //	      out.println("</body></html>");
       }
    }

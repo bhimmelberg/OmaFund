@@ -45,7 +45,7 @@ public class SimpleFormLogIn extends HttpServlet {
          connection = DBConnection.connection;
 
          if (userNameEntry.isEmpty() || passwordEntry.isEmpty()) {
-        	 String error = "User Name or Password Cannot be Empty!";
+        	 String error = "Username or Password Cannot be Empty!";
         	 
              out.println(docType + //
                    "<html>\n" + //
@@ -76,9 +76,16 @@ public class SimpleFormLogIn extends HttpServlet {
             {
             	//logged in
             	System.out.println("You Are Logged In!");
-            	out.println("<meta http-equiv=\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
+            	out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
             }
          }
+         String error = "Username or Password is Incorrect!";
+    	 
+         out.println(docType + //
+               "<html>\n" + //
+               "<head><title>" + error + "</title></head>\n" + //
+               "<body bgcolor=\"#f0f0f0\">\n" + //
+               "<h1 align=\"center\">" + error + "</h1>\n");
          out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
          out.println("</body></html>");
          rs.close();
