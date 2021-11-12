@@ -44,21 +44,24 @@ public class SimpleFormLogIn extends HttpServlet {
          DBConnection.getDBConnection();
          connection = DBConnection.connection;
 
-         if (userNameEntry.isEmpty()) {
+         if (userNameEntry.isEmpty() || passwordEntry.isEmpty()) {
         	 //Do Nothing
-            String selectSQL = "SELECT * FROM myTable";
-            preparedStatement = connection.prepareStatement(selectSQL);
          } else {
-            String selectSQL = "SELECT * FROM myTable WHERE MYUSER LIKE ?";
-            String theUserName = userNameEntry + "%";
+            String selectSQL = "SELECT * FROM UserInfo WHERE username LIKE ? AND password LIKE ?";
+            String theUserName = userNameEntry;
+            String thePassword = passwordEntry;
             preparedStatement = connection.prepareStatement(selectSQL);
             preparedStatement.setString(1, theUserName);
+            preparedStatement.setString(2, thePassword);
          }
          ResultSet rs = preparedStatement.executeQuery();
 
          while (rs.next()) {
             String userName = rs.getString("userName").trim();
             String password = rs.getString("password").trim();
+            
+            //SAVED ID NUMBER WE NEED FOR REST OF STUFF
+            int idNum = rs.getInt("id");
 
             if (userName.equals(userNameEntry) && password.equals(passwordEntry))
             {
