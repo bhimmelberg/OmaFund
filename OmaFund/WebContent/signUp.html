@@ -3,7 +3,7 @@
 <style>
 header {
     background-color:skyblue;
-    color:burgundy;
+    color:black;
     text-align:center;
     padding:5px;	 
 }
@@ -11,18 +11,19 @@ nav {
     line-height:30px;
     background-color:#eeeeee;
     height:300px;
-    width:150px;
+    width:50px;
     float:left;
     padding:5px;	      
 }
 section {
-    width:350px;
+    width:500px;
     float:left;
+    text-align:center;
     padding:10px;	 	 
 }
 footer {
     background-color:black;
-    color:white;
+    color:skyblue;
     clear:both;
     text-align:center;
     padding:5px;	 	 
@@ -32,24 +33,25 @@ footer {
 
 <body>
 <header>
-<h1> kCustom Order Form </h1>
+<h1> OmaFund </h1>
 </header>
 
 <nav>
-<a href="/webproject/Search.html">Search Other Orders</a> <br>
+<a href="/OmaFund/logIn.html">Log In</a> <br>
 </nav>
 
 <section>
-	<h1>Order Here!</h1>
+	<h1>Sign up to get started with OmaFund</h1>
 	
-	<form action="SimpleInsertHB" method="POST">
+	<form action="signUp" method="POST">
 	
-		Item: <input type="text" name="item"> <br />
+		User Name: <input type="text" name="userName"> <br />
+		Password: <input type="text" name="password"> <br />
 		First Name: <input type="text" name="firstName"> <br />
 		Last Name: <input type="text" name="lastName"> <br />
-		Phone Number: <input type="text" name="phone"> <br />
-		Address: <input type="text" name="address"> <br />
-		Price: <input type="text" name="price"> <br />
+		Age: <input type="text" name="age"> <br />
+		Email: <input type="text" name="email"> <br />
+		
 		
 		<input type="submit" value="Submit" />
 	</form>
@@ -57,7 +59,7 @@ footer {
 </section>
 
 <footer>
-Copyright
+RKB
 </footer>
 </body>
 </html>
