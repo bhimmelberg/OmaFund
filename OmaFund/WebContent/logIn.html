@@ -15,6 +15,20 @@ nav {
     float:left;
     padding:5px;	      
 }
+
+label{
+display:inline-block;
+width:200px;
+margin-right:30px;
+text-align:right;
+}
+
+fieldset{
+border:none;
+width:500px;
+margin:0px auto;
+}
+
 section {
     width:550px;
     float:left;
@@ -54,8 +68,8 @@ footer {
 	
 	<form action="SimpleFormLogIn" method="POST">
 	
-		User Name: <input type="text" name="userName"> <br />
-		Password: <input type="password" name="password"> <br />
+		<label for="userName">User Name: </label><input type="text" name="userName"> <br />
+		<label for="password">Password: </label><input type="password" name="password"> <br />
 		
 		<input type="submit" value="Submit" />
 	</form>
