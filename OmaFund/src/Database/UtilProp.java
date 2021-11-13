@@ -9,7 +9,7 @@ public class UtilProp {
    static final boolean _W = System.getProperty("os.name").toLowerCase().contains("windows");
 
 
-   static String _PROP_FILENAME_WIN_LOCAL = "C:\\Users\\bhimm\\git\\repository3\\OmaFund\\WebContent\\config.properties";
+   static String _PROP_FILENAME_WIN_LOCAL = "C:\\SPB_Data\\git\\OmaFund\\OmaFund\\WebContent\\config.properties";
 
    static String _PROP_FILENAME_OSX_LOCAL = "/YOUR_PATH/webproject/WebContent/config.properties";
    // * Remote server path

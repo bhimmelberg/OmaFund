@@ -45,7 +45,7 @@ public class SimpleFormLogIn extends HttpServlet {
          connection = DBConnection.connection;
 
          if (userNameEntry.isEmpty() || passwordEntry.isEmpty()) {
-        	 String error = "Username or Password Cannot be Empty!";
+        	 String error = "Error: Username or Password Cannot be Empty!";
         	 
              out.println(docType + //
                    "<html>\n" + //

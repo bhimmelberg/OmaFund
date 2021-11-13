@@ -24,7 +24,7 @@ public class SimpleFormEdit extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  PrintWriter out = response.getWriter();
-	  String userName = request.getParameter("userName");
+	  //String userName = request.getParameter("userName");
       String password = request.getParameter("password");
       String email = request.getParameter("email");
       String firstName = request.getParameter("firstName");
@@ -39,7 +39,7 @@ public class SimpleFormEdit extends HttpServlet {
     	  age = 0;
       }
       
-      if (userName.equals("") && password.equals("") && firstName.equals("") 
+      if (password.equals("") && firstName.equals("") 
     		  && lastName.equals("") && (age == 0) &&  email.equals(""))
       {
     	 String error = "";
@@ -61,14 +61,6 @@ public class SimpleFormEdit extends HttpServlet {
 	         DBConnection.getDBConnection();
 	         connection = DBConnection.connection;
 	         
-	         if(userName != "")
-	         {
-	        	String insertSql = "UPDATE UserInfo SET username = ? WHERE id = ?";
-	        	PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
-	        	preparedStmt.setString(1, userName);
-	        	preparedStmt.setInt(2, DBConnection.getID());
-	        	preparedStmt.execute();
-	         }
 	         if(password != "")
 	         {
 	        	String insertSql = "UPDATE UserInfo SET password = ? WHERE id = ?";

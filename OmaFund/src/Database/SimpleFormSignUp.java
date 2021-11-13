@@ -73,12 +73,25 @@ public class SimpleFormSignUp extends HttpServlet {
 	         
 	         preparedStmt.execute();
 	         connection.close();
-	      } catch (Exception e) {
+	      } 
+	      catch (java.sql.SQLIntegrityConstraintViolationException e)
+	      {
+	    	  String error = "Error: Username Already Taken";
+	    	  String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
+	    	            "transitional//en\">\n";
+	    	  out.println(docType + //
+	                  "<html>\n" + //
+	                  "<head><title>" + error + "</title></head>\n" + //
+	                  "<body bgcolor=\"#f0f0f0\">\n" + //
+	                  "<h1 align=\"center\">" + error + "</h1>\n");
+	    	  out.println("<a href=/OmaFund/signUp.html>Sign Up</a> <br>");
+	    	  out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
+	    	  return;
+	      }
+	      catch (Exception e) {
 	         e.printStackTrace();
 	      }
-//	      out.println("<meta http-equiv=\"refresh\" content=\"0; /OmaFund/logIn.html\" />");
-	      out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
-//	      out.println("</body></html>");
+	      out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/logIn.html\" />");
       }
    }
 
@@ -86,5 +99,4 @@ public class SimpleFormSignUp extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }
