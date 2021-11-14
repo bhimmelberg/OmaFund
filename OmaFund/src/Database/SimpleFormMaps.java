@@ -187,7 +187,7 @@ public class SimpleFormMaps extends HttpServlet {
 	  		"\r\n" + 
 	  		"      #locations-panel-list h1.search-title > img {\r\n" + 
 	  		"        vertical-align: bottom;\r\n" + 
-	  		"        margin-top: -1em;\r\n" + 
+	  		"        margin-top: 1em;\r\n" + 
 	  		"      }\r\n" + 
 	  		"\r\n" + 
 	  		"      #locations-panel-list .search-input {\r\n" + 
@@ -616,6 +616,9 @@ public class SimpleFormMaps extends HttpServlet {
 	  		"      <div id=\"locations-panel\">\r\n" + 
 	  		"        <div id=\"locations-panel-list\">\r\n" + 
 	  		"          <header>\r\n" + 
+	  		"			<form action=\"/OmaFund/youIn.html\">\r\n" + 
+	  		"    			<input type=\"submit\" value=\"Back\" />\r\n" + 
+	  		"			</form>" +
 	  		"            <h1 class=\"search-title\">\r\n" + 
 	  		"              <img src=\"https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg\"/>\r\n" + 
 	  		"              Find a Sale Near You\r\n" + 
