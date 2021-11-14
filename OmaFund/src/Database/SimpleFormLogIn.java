@@ -1,4 +1,6 @@
 package Database;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -71,6 +73,7 @@ public class SimpleFormLogIn extends HttpServlet {
             
             //SAVED ID NUMBER WE NEED FOR REST OF STUFF
             DBConnection.setID(rs.getInt("id"));
+            DBConnection.setOmaFundUserName(userName);
 
             if (userName.equals(userNameEntry) && password.equals(passwordEntry))
             {

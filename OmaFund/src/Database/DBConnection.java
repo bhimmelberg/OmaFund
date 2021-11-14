@@ -1,10 +1,17 @@
 package Database;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 public class DBConnection {
    public static Connection connection = null;
    private static int userID = -1;
+   private static String omaFundUserName = "";
 
    public static void getDBConnection() {
       System.out.println("-------- MySQL JDBC Connection Testing ------------");
@@ -59,4 +66,27 @@ public class DBConnection {
    static int getID() {
 	   return userID;
    }
+   
+   static void setOmaFundUserName(String name) {
+	   omaFundUserName = name;
+   }
+   
+   static String getOmaFundUserName() {
+	   System.out.println("printing.....");
+	   return omaFundUserName;
+   }
+   
+   static void test() {
+	   System.out.println("printing.....");
+   }
+   
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   PrintWriter out = response.getWriter();
+	   System.out.println("printing.....");
+   }
+   
+   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
+	}
 }
