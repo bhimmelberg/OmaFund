@@ -61,8 +61,15 @@ footer {
 </nav>
 
 <section>
+
+	<script type = "text/javascript">  
+		function myfunction() {
+			alert("getting maps data");  
+			}
+     	}  
+	</script>
+
 	<h1>Create A New Community Project</h1>
-	
 	<form action="SimpleFormProject" method="POST">
 	
 		<label for="userName">Title:</label><input type="text" name="title"> <br />
@@ -72,7 +79,7 @@ footer {
 		<label for="password">Donation Goal: </label><input type="number" name="goal"> <br />
 		<label for="password">Donation Percentage: </label><input type="number" name="donationPercent"> <br />
 		
-		<input type="submit" value="Submit" />
+		<input type="submit" onClick="myfunction()" value="Submit" />
 	</form>
 
 </section>
