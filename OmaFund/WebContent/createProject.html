@@ -55,25 +55,22 @@ footer {
 </header>
 
 <nav>
-<form action="/OmaFund/logIn.html">
-    <input type="submit" value="Log In" />
-</form>
-<form action="/OmaFund/home.html">
-    <input type="submit" value="Home" />
+<form action="/OmaFund/youIn.html">
+    <input type="submit" value="Back" />
 </form>
 </nav>
 
 <section>
-	<h1>Sign up to get started with OmaFund</h1>
+	<h1>Create A New Community Project</h1>
 	
 	<form action="SimpleFormSignUp" method="POST">
 	
-		<label for="userName">User Name:</label><input type="text" name="userName"> <br />
-		<label for="password">Password: </label><input type="password" name="password"> <br />
-		<label for="password">First Name: </label><input type="text" name="firstName"> <br />
-		<label for="password">Last Name: </label><input type="text" name="lastName"> <br />
-		<label for="password">Age: </label><input type="text" name="age"> <br />
-		<label for="password">Email: </label><input type="text" name="email"> <br />
+		<label for="userName">Name:</label><input type="text" name="name"> <br />
+		<label for="password">Description: </label><input type="text" name="description"> <br />
+		<label for="password">Address (line 1): </label><input type="text" name="addLine1"> <br />
+		<label for="password">Address (line 2): </label><input type="text" name="addLine2"> <br />
+		<label for="password">Goal: </label><input type="number" name="goal"> <br />
+		<label for="password">Required Percentage: </label><input type="number" name="donationPercent"> <br />
 		
 		<input type="submit" value="Submit" />
 	</form>
