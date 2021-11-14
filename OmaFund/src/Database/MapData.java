@@ -1,8 +1,5 @@
 package Database;
 
-import javax.servlet.annotation.WebServlet;
-
-@WebServlet("/MapData")
 public class MapData {
 	
 	private int ID;

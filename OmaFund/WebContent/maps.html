@@ -481,7 +481,6 @@
       }
     </script>
     <script>
-      
       const CONFIGURATION = {
 	        "locations": [
 	            {"title":"1347 S 52nd Ave","address1":"1347 S 52nd Ave","address2":"Omaha, NE 68106, USA","coords":{"lat":41.24536806606571,"lng":-95.99405055604602}},
@@ -504,7 +503,7 @@
             <h2 class="name">{{title}}</h2>
           </button>
           <div class="address">{{address1}}<br>{{address2}}</div>
-			<form action="/OmaFund/viewSale.html">
+			<form action="SimpleFormSale" method="POST">
 				<input id="saleID" name="saleID" type="hidden" value=locator.selectedLocationIdx />
     			<input type="submit" value="View Sale" />
 		    </form>

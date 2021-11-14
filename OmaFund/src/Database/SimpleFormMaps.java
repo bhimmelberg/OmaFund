@@ -579,8 +579,8 @@ public class SimpleFormMaps extends HttpServlet {
 	  		"            <h2 class=\"name\">{{title}}</h2>\r\n" + 
 	  		"          </button>\r\n" + 
 	  		"          <div class=\"address\">{{address1}}<br>{{address2}}</div>\r\n" + 
-	  		"			<form action=\"/OmaFund/viewSale.html\">\r\n" + 
-	  		"				<input id=\"saleID\" name=\"saleID\" type=\"hidden\" value=locator.selectedLocationIdx />\r\n" + 
+	  		"			<form action=\"SimpleFormSale\" method=\"POST\">\r\n" + 
+	  		"				<input id=\"saleID\" name=\"saleID\" type=\"hidden\" value=Sale ID />\r\n" + 
 	  		"    			<input type=\"submit\" value=\"View Sale\" />\r\n" + 
 	  		"		    </form>\r\n" + 
 	  		"          {{#if travelDistanceText}}\r\n" + 
