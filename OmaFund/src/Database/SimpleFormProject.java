@@ -71,7 +71,7 @@ public class SimpleFormProject extends HttpServlet {
                 "<head><title>" + error + "</title></head>\n" + //
                 "<body bgcolor=\"#f0f0f0\">\n" + //
                 "<h1 align=\"center\">" + error + "</h1>\n");
-          out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/createProject.html\" />");
+          out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/createProject.html\" />");
       }
       else
       {

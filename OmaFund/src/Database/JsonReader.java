@@ -61,17 +61,4 @@ public class JsonReader {
 	  Float lat = location.getFloat("lat");
 	  return lat;
   }
-  
-//  public static void main(String[] args) throws IOException, JSONException {
-////    JSONObject json = readJsonFromUrl("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBrxQ6cDHtbLklLr5z25xJxQAOHB0LqRe4");
-////    JSONArray results = json.getJSONArray("results");
-////    JSONObject addr = results.getJSONObject(0);
-////    JSONObject geo = addr.getJSONObject("geometry");
-////    JSONObject location = geo.getJSONObject("location");
-////    float lng = location.getFloat("lng");
-////    Float lat = location.getFloat("lat");
-////    System.out.println("longitude: " + lng + "\nlatitude: " + lat);
-//	  float lat = getLatitude("1347 South 52nd Ave", "Omaha NE");
-//	  System.out.println(lat);
-//  }
 }
