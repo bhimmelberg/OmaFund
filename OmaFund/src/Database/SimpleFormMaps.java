@@ -24,6 +24,12 @@ public class SimpleFormMaps extends HttpServlet {
 		super();
 	}
 	
+	//This method:
+	//1.) Retrieves sale info from [Sale Info] Table.
+	//2.) Formats sale data for html and places in ->mapDataString;
+	//3.) Prints all Google Maps API code.
+	//
+	//	 *note: This needs to run in a browser to work.
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  
 		Connection connection = null;
@@ -33,6 +39,8 @@ public class SimpleFormMaps extends HttpServlet {
 		try {
 	         DBConnection.getDBConnection();
 	         connection = DBConnection.connection;
+	         
+	         //I created a Sale Info Table, feel free to add columns if necessary
 	         String selectSQL = "SELECT * FROM SaleInfo";
 	         preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();
@@ -46,6 +54,8 @@ public class SimpleFormMaps extends HttpServlet {
 		         float lat = rs.getFloat("LAT");
 		         float lon = rs.getFloat("LON");
 		         
+		         //I only use MapData for the toString(). Probably didn't need to make it.
+		         //The toString() gets it into the html format we need for the google maps API.
 		         MapData mapData = new MapData(id, title, addr1, addr2, lat, lon);
 		         mapDataString += mapData.toString() + ',';
 	         }
@@ -72,6 +82,14 @@ public class SimpleFormMaps extends HttpServlet {
 	         }
 	      }
 		
+		//I have no idea how to get data from mySQL into a .html page, so I
+		//literally just copied and pasted most of the google maps API code below.
+		//
+		//You can see near the bottom of this text, I add in our sale location data.
+		//
+		//@TODO Figure out how to get GPS coordinates of address by using Google Map Geocoding API.
+		//@TODO We need to store the sale that the user clicks on, when they select 'View Sale', 
+		//		so we know which sale info to display.
 		PrintWriter out = response.getWriter();
 		out.println("<!--\r\n" + 
 	  		"  Copyright 2021 Google LLC\r\n" + 
@@ -560,7 +578,7 @@ public class SimpleFormMaps extends HttpServlet {
 	  		"      const CONFIGURATION = {\r\n" + 
 	  		"	        \"locations\": [\r\n" + 
 	  		
-	  		//ADD MYSQL DATA HERE
+	  		//MYSQL DATA INSERTED HERE
 	  		mapDataString + 
 	  		
 	  		"	          ],\r\n" + 
