@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/SimpleFormProject")
-public class SimpleFormProject extends HttpServlet {
+public class YourProjects extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static int projectID = -1;
 
@@ -29,7 +29,7 @@ public class SimpleFormProject extends HttpServlet {
 		return projectID;
 	}
 	
-	public SimpleFormProject() {
+	public YourProjects() {
 		super();
 	}
 
