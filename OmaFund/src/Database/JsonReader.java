@@ -37,8 +37,8 @@ public class JsonReader {
   public static float getLongitude(String addrLine1, String addrLine2) throws IOException, JSONException
   {
 	  String urlBegin = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-	  String APIKey = "&key=AIzaSyBrxQ6cDHtbLklLr5z25xJxQAOHB0LqRe4\");";
-	  String url = urlBegin + addrLine1 + addrLine2 + APIKey;
+	  String APIKey = "&key=AIzaSyBrxQ6cDHtbLklLr5z25xJxQAOHB0LqRe4";
+	  String url = urlBegin + addrLine1.replace(" ", "%20") + "%20" + addrLine2.replace(" ", "%20") + APIKey;
 	  JSONObject json = readJsonFromUrl(url);
 	  JSONArray results = json.getJSONArray("results");
 	  JSONObject addr = results.getJSONObject(0);
@@ -51,8 +51,8 @@ public class JsonReader {
   public static float getLatitude(String addrLine1, String addrLine2) throws IOException, JSONException
   {
 	  String urlBegin = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-	  String APIKey = "&key=AIzaSyBrxQ6cDHtbLklLr5z25xJxQAOHB0LqRe4\");";
-	  String url = urlBegin + addrLine1 + addrLine2 + APIKey;
+	  String APIKey = "&key=AIzaSyBrxQ6cDHtbLklLr5z25xJxQAOHB0LqRe4";
+	  String url = urlBegin + addrLine1.replace(" ", "%20") + "%20" + addrLine2.replace(" ", "%20") + APIKey;
 	  JSONObject json = readJsonFromUrl(url);
 	  JSONArray results = json.getJSONArray("results");
 	  JSONObject addr = results.getJSONObject(0);
@@ -63,13 +63,15 @@ public class JsonReader {
   }
   
 //  public static void main(String[] args) throws IOException, JSONException {
-//    JSONObject json = readJsonFromUrl("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBrxQ6cDHtbLklLr5z25xJxQAOHB0LqRe4");
-//    JSONArray results = json.getJSONArray("results");
-//    JSONObject addr = results.getJSONObject(0);
-//    JSONObject geo = addr.getJSONObject("geometry");
-//    JSONObject location = geo.getJSONObject("location");
-//    float lng = location.getFloat("lng");
-//    Float lat = location.getFloat("lat");
-//    System.out.println("longitude: " + lng + "\nlatitude: " + lat);
+////    JSONObject json = readJsonFromUrl("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyBrxQ6cDHtbLklLr5z25xJxQAOHB0LqRe4");
+////    JSONArray results = json.getJSONArray("results");
+////    JSONObject addr = results.getJSONObject(0);
+////    JSONObject geo = addr.getJSONObject("geometry");
+////    JSONObject location = geo.getJSONObject("location");
+////    float lng = location.getFloat("lng");
+////    Float lat = location.getFloat("lat");
+////    System.out.println("longitude: " + lng + "\nlatitude: " + lat);
+//	  float lat = getLatitude("1347 South 52nd Ave", "Omaha NE");
+//	  System.out.println(lat);
 //  }
 }

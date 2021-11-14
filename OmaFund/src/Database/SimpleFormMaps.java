@@ -41,18 +41,20 @@ public class SimpleFormMaps extends HttpServlet {
 	         connection = DBConnection.connection;
 	         
 	         //I created a Sale Info Table, feel free to add columns if necessary
-	         String selectSQL = "SELECT * FROM SaleInfo";
+	         String selectSQL = "SELECT * FROM Projects";
 	         preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();
 	         
 	         while(rs.next())
 	         {
 	        	 int id = rs.getInt("id");
-		         String title = rs.getString("TITLE").trim();
-		         String addr1 = rs.getString("ADDR1").trim();
-		         String addr2 = rs.getString("ADDR2").trim();
-		         float lat = rs.getFloat("LAT");
-		         float lon = rs.getFloat("LON");
+		         String title = rs.getString("title").trim();
+		         String addr1 = rs.getString("address1").trim();
+		         String addr2 = rs.getString("address2").trim();
+		         float lat = JsonReader.getLatitude(addr1, addr2);
+		         float lon = JsonReader.getLongitude(addr1, addr2);
+		         System.out.println(lat);
+		         System.out.println(lon);
 		         
 		         //I only use MapData for the toString(). Probably didn't need to make it.
 		         //The toString() gets it into the html format we need for the google maps API.
