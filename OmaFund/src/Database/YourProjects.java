@@ -1,4 +1,5 @@
 package Database;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,78 +23,64 @@ public class YourProjects extends HttpServlet {
       super();
    }
 
-   int userID = DBConnection.getID();
-  /* protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String userNameEntry = request.getParameter("userName");
-      String passwordEntry = request.getParameter("password");
-      search(userNameEntry, passwordEntry, response);
-   }*/
+   
+   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	   int userID = DBConnection.getID();
+	   response.setContentType("text/html");
+	      PrintWriter out = response.getWriter();
+	      String title = "Your Projects";
+	      String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
+	            "transitional//en\">\n"; //
+	      out.println(docType + //
+	            "<html>\n" + //
+	            "<head><title>" + title + "</title></head>\n" + //
+	            "<body bgcolor=\"#f0f0f0\">\n" + //
+	            "<h1 align=\"center\">" + title + "</h1>\n");
 
-   void search(String projectID, HttpServletResponse response) throws IOException {
-      response.setContentType("text/html");
-      PrintWriter out = response.getWriter();
-      String title = "Database Result";
-      String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
-            "transitional//en\">\n"; //
-      out.println(docType + //
-            "<html>\n" + //
-            "<head><title>" + title + "</title></head>\n" + //
-            "<body bgcolor=\"#f0f0f0\">\n" + //
-            "<h1 align=\"center\">" + title + "</h1>\n");
+	      Connection connection = null;
+	      PreparedStatement preparedStatement = null;
+	      try {
+	         DBConnection.getDBConnection();
+	         connection = DBConnection.connection;
 
-      Connection connection = null;
-      PreparedStatement preparedStatement = null;
-      try {
-         DBConnection.getDBConnection();
-         connection = DBConnection.connection;
+	  
+	         String selectSQL = "SELECT * FROM Projects";
+	         preparedStatement = connection.prepareStatement(selectSQL);   
+	         ResultSet rs = preparedStatement.executeQuery();
 
-  
-           String selectSQL = "SELECT * FROM Projects WHERE id LIKE ?";
-          //  String theUserName = userNameEntry;
-           // String thePassword = passwordEntry;
-            preparedStatement = connection.prepareStatement(selectSQL);
-           // preparedStatement.setString(1, theUserName);
-           // preparedStatement.setString(2, thePassword);
-            
-         ResultSet rs = preparedStatement.executeQuery();
+	         while (rs.next()) {
+	            int theUserID = rs.getInt("id");
 
-         while (rs.next()) {
-            int theUserID = rs.getInt("id");
-            
-            //SAVED ID NUMBER WE NEED FOR REST OF STUFF
+	            if (userID == theUserID)
+	            {
+	            	String description = rs.getString("description");
 
-            if (userID == theUserID)
-            {
-            	//logged in
-            	String description = rs.getString("description");
+	            	out.println(description);
+	            }
+	         }
+	         preparedStatement.close();
+	         connection.close();
+	      } catch (SQLException se) {
+	         se.printStackTrace();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         try {
+	            if (preparedStatement != null)
+	               preparedStatement.close();
+	         } catch (SQLException se2) {
+	         }
+	         try {
+	            if (connection != null)
+	               connection.close();
+	         } catch (SQLException se) {
+	            se.printStackTrace();
+	         }
+	      }
+   }
 
-            	out.println(docType + //
-                        "<html>\n" + //
-                        "<head><title>" + description + "</title></head>\n" + //
-                        "<body bgcolor=\"#f0f0f0\">\n" + //
-                        "<h1 align=\"center\">" + description + "</h1>\n");
-            
-            }
-         }
-         preparedStatement.close();
-         connection.close();
-      } catch (SQLException se) {
-         se.printStackTrace();
-      } catch (Exception e) {
-         e.printStackTrace();
-      } finally {
-         try {
-            if (preparedStatement != null)
-               preparedStatement.close();
-         } catch (SQLException se2) {
-         }
-         try {
-            if (connection != null)
-               connection.close();
-         } catch (SQLException se) {
-            se.printStackTrace();
-         }
-      }
+   void search(int userID, HttpServletResponse response) throws IOException {
+      
    }
 
    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
