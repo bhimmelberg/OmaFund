@@ -481,16 +481,17 @@
       }
     </script>
     <script>
+      
       const CONFIGURATION = {
-        "locations": [
-          {"title":"1347 S 52nd Ave","address1":"1347 S 52nd Ave","address2":"Omaha, NE 68106, USA","coords":{"lat":41.24536806606571,"lng":-95.99405055604602},"placeId":"ChIJN4hLqjKMk4cRuTjf1-jTii0"},
-          {"title":"Peter Kiewit Institute","address1":"1110 S 67th St","address2":"Omaha, NE 68182, USA","coords":{"lat":41.24736689923323,"lng":-96.01647083884937},"placeId":"ChIJqwZ9jq2Nk4cR5fngQKZE_dA"},
-          {"title":"Baxter Arena","address1":"2425 S 67th St","address2":"Omaha, NE 68182, USA","coords":{"lat":41.23583521818679,"lng":-96.01380240340626},"placeId":"ChIJta6XBE6Mk4cRjcPCnIu18ms"},
-          {"title":"Durham Science Center","address1":"6601 University Dr N","address2":"Omaha, NE 68182, USA","coords":{"lat":41.25876280126016,"lng":-96.01314300022634},"placeId":"ChIJnfvJcbuNk4cR42IoZ6Obf5U"}
-        ],
-        "mapOptions": {"center":{"lat":38.0,"lng":-100.0},"fullscreenControl":true,"mapTypeControl":false,"streetViewControl":false,"zoom":4,"zoomControl":true,"maxZoom":17},
-        "mapsApiKey": "AIzaSyBrxQ6cDHtbLklLr5z25xJxQAOHB0LqRe4"
-      };
+	        "locations": [
+	            {"title":"1347 S 52nd Ave","address1":"1347 S 52nd Ave","address2":"Omaha, NE 68106, USA","coords":{"lat":41.24536806606571,"lng":-95.99405055604602}},
+	            {"title":"Peter Kiewit Institute","address1":"1110 S 67th St","address2":"Omaha, NE 68182, USA","coords":{"lat":41.24736689923323,"lng":-96.01647083884937}},
+	            {"title":"Baxter Arena","address1":"2425 S 67th St","address2":"Omaha, NE 68182, USA","coords":{"lat":41.23583521818679,"lng":-96.01380240340626}},
+	            {"title":"Durham Science Center","address1":"6601 University Dr N","address2":"Omaha, NE 68182, USA","coords":{"lat":41.25876280126016,"lng":-96.01314300022634}}
+	          ],
+	          "mapOptions": {"center":{"lat":38.0,"lng":-100.0},"fullscreenControl":true,"mapTypeControl":false,"streetViewControl":false,"zoom":4,"zoomControl":true,"maxZoom":17},
+	          "mapsApiKey": "AIzaSyBrxQ6cDHtbLklLr5z25xJxQAOHB0LqRe4"
+	        };
 
       function initMap() {
         new LocatorPlus(CONFIGURATION);
@@ -503,10 +504,15 @@
             <h2 class="name">{{title}}</h2>
           </button>
           <div class="address">{{address1}}<br>{{address2}}</div>
+			<form action="/OmaFund/viewSale.html">
+				<input id="saleID" name="saleID" type="hidden" value=locator.selectedLocationIdx />
+    			<input type="submit" value="View Sale" />
+		    </form>
           {{#if travelDistanceText}}
             <div class="distance">{{travelDistanceText}}</div>
           {{/if}}
         </li>
+			
       {{/each}}
     </script>
   </head>
@@ -517,7 +523,7 @@
           <header>
             <h1 class="search-title">
               <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg"/>
-              Find a location near you
+              Find a Sale Near You
             </h1>
             <div class="search-input">
               <input id="location-search-input" placeholder="Enter your address or zip code">

@@ -10,8 +10,8 @@ header {
 nav {
     line-height:30px;
     background-color:#eeeeee;
-    height:300px;
-    width:60px;
+    height:100%;
+    width:50px;
     float:left;
     padding:5px;	      
 }
@@ -35,6 +35,7 @@ section {
     text-align:center;
     padding:10px;	 	 
 }
+
 footer {
     position:absolute;
 	bottom:0;
@@ -54,12 +55,8 @@ footer {
 </header>
 
 <nav>
-<form action="/OmaFund/youIn.html">
-    <input type="submit" value="Back" />
-</form>
-
-<form action="/OmaFund/signUp.html">
-    <input type="submit" value="Sign Up" />
+<form action="/OmaFund/logIn.html">
+    <input type="submit" value="Log In" />
 </form>
 <form action="/OmaFund/home.html">
     <input type="submit" value="Home" />
@@ -67,12 +64,14 @@ footer {
 </nav>
 
 <section>
-	<h1>Log In to OmaFund</h1>
+	<form action="SimpleFormMaps" method="POST">
 	
-	<form action="SimpleFormLogIn" method="POST">
-	
-		<label for="userName">User Name: </label><input type="text" name="userName"> <br />
+		<label for="userName">User Name:</label><input type="text" name="userName"> <br />
 		<label for="password">Password: </label><input type="password" name="password"> <br />
+		<label for="password">First Name: </label><input type="text" name="firstName"> <br />
+		<label for="password">Last Name: </label><input type="text" name="lastName"> <br />
+		<label for="password">Age: </label><input type="text" name="age"> <br />
+		<label for="password">Email: </label><input type="text" name="email"> <br />
 		
 		<input type="submit" value="Submit" />
 	</form>
