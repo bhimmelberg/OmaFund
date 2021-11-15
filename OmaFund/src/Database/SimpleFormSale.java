@@ -24,6 +24,7 @@ public class SimpleFormSale extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  PrintWriter out = response.getWriter();
+	  //String title = request.getParameter("saleID");
 	  String title = request.getParameter("saleID");
       String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
             "transitional//en\">\n"; //

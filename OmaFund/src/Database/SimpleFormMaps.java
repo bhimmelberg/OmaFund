@@ -579,7 +579,6 @@ public class SimpleFormMaps extends HttpServlet {
 	  		"      \r\n" + 
 	  		"      const CONFIGURATION = {\r\n" + 
 	  		"	        \"locations\": [\r\n" + 
-	  		
 	  		//MYSQL DATA INSERTED HERE
 	  		mapDataString + 
 	  		
@@ -600,8 +599,8 @@ public class SimpleFormMaps extends HttpServlet {
 	  		"          </button>\r\n" + 
 	  		"          <div class=\"address\">{{address1}}<br>{{address2}}</div>\r\n" + 
 	  		"			<form action=\"SimpleFormSale\" method=\"POST\">\r\n" + 
-	  		"				<input id=\"saleID\" name=\"saleID\" type=\"hidden\" value=Sale ID />\r\n" + 
-	  		"    			<input type=\"submit\" value=\"View Sale\" />\r\n" + 
+	  		"				<input id=\"saleID\" name=\"saleID\" type=\"hidden\" value=\"\" />\r\n" + 
+	  		"    			<input type=\"submit\" value=\"View Sale\" />\r\n" +
 	  		"		    </form>\r\n" + 
 	  		"          {{#if travelDistanceText}}\r\n" + 
 	  		"            <div class=\"distance\">{{travelDistanceText}}</div>\r\n" + 

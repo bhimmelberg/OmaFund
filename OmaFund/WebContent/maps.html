@@ -506,6 +506,11 @@
 			<form action="SimpleFormSale" method="POST">
 				<input id="saleID" name="saleID" type="hidden" value=locator.selectedLocationIdx />
     			<input type="submit" value="View Sale" />
+				<script>
+					function getIDValue(){
+						let idVal = document.getElementByID('location-results-section-name').value;
+					}
+				</scipt>
 		    </form>
           {{#if travelDistanceText}}
             <div class="distance">{{travelDistanceText}}</div>
