@@ -79,7 +79,7 @@ public class SimpleFormLogIn extends HttpServlet {
             {
             	//logged in
             	System.out.println("You Are Logged In!");
-            	out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/youIn.html\" />");
+            	out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/youIn.html\" />");
             }
          }
          String error = "Username or Password is Incorrect!";
