@@ -12,14 +12,7 @@ nav {
     color:skyblue;
     text-align:center;
     padding:10px;
-    height:100%
 }
-
-div.container {
-	  text-align: center;
-      display:inline-block;
-      padding:50px;
-    }
 
 form{
 	display:inline-block;
@@ -31,9 +24,24 @@ section {
     text-align:center;
     padding:10px;	 	 
 }
+
+body {
+	background-color:grey
+}
+
+div.container {
+	  text-align: center;
+      display:inline-block;
+      padding:50px;
+    }
+    
+div.center {
+	text-align: center;
+}
+
 footer { 
 	position:absolute;
-	bottom:0;
+	bottom:-80;
 	width:100%;
     background-color:black;
     color:white;
@@ -65,7 +73,23 @@ footer {
     <input type="submit" value="Your Projects" />
 </form>
 
+<form action="/OmaFund/home.html">
+    <input type="submit" value="Sign Out" />
+</form>
+
 </nav>
+
+<div class="center">
+    <div class="container">
+        <img src="/OmaFund/images/omaha_stock.jpg" height="142" width="200" style="border: #EBEBEB 4px solid;"/>
+    </div>
+    <div class="container">
+        <img src="/OmaFund/images/uno_stock.jpg" height="142" width="200" style="border: #EBEBEB 4px solid"/>
+    </div>
+    <div class="container">
+         <img src="/OmaFund/images/community.jpg" height="142" width="200" style="border: #EBEBEB 4px solid"/>
+    </div>
+</div>
 
 <footer>
 RKB

@@ -92,7 +92,7 @@
 
       #locations-panel-list h1.search-title > img {
         vertical-align: bottom;
-        margin-top: -1em;
+        margin-top: 1em;
       }
 
       #locations-panel-list .search-input {
@@ -503,15 +503,13 @@
             <h2 class="name">{{title}}</h2>
           </button>
           <div class="address">{{address1}}<br>{{address2}}</div>
-			<form action="SimpleFormSale" method="POST">
-				<input id="saleID" name="saleID" type="hidden" value=locator.selectedLocationIdx />
-    			<input type="submit" value="View Sale" />
-		    </form>
+			<form action="YourProjects" method="POST">
+				<input type="submit" name={{index}} value="View Sale"/>
+			</form>
           {{#if travelDistanceText}}
             <div class="distance">{{travelDistanceText}}</div>
           {{/if}}
         </li>
-			
       {{/each}}
     </script>
   </head>
@@ -520,6 +518,9 @@
       <div id="locations-panel">
         <div id="locations-panel-list">
           <header>
+          <form action="/OmaFund/youIn.html">
+    			<input type="submit" value="Back" />
+			</form>
             <h1 class="search-title">
               <img src="https://fonts.gstatic.com/s/i/googlematerialicons/place/v15/24px.svg"/>
               Find a Sale Near You

@@ -97,6 +97,7 @@ public class YourProjects extends HttpServlet {
 	            "<html>\n" + //
 	            "<head><title>" + title + "</title></head>\n" + //
 	            "<body bgcolor=\"#f0f0f0\">\n" + //
+<<<<<<< HEAD
 	            "<h1 align=\"center\">" + title + "</h1>\n" +
 	            "<html>\n" + //
      			"<nav>\r\n" + 
@@ -105,6 +106,9 @@ public class YourProjects extends HttpServlet {
      			"    <input type=\"submit\" value=\"Home\" />\r\n" + 
      			"</form>\r\n" + 
      			"</nav>");*/
+
+	         //   "<h1 align=\"center\">" + title + "</h1>\n");
+	      
 
 	      Connection connection = null;
 	      PreparedStatement preparedStatement = null;
