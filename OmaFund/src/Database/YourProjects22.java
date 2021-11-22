@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/YourProjects")
-public class YourProjects extends HttpServlet {
+public class YourProjects22 extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
-   public YourProjects() {
+   public YourProjects22() {
       super();
    }
 
@@ -126,8 +126,11 @@ public class YourProjects extends HttpServlet {
 
 	            if (userID == theUserID)
 	            {
-	            	String description = rs.getString("title");
-	            	out.println("<section>" + description + "</section><br />");
+	            	String title = rs.getString("title");
+	            	String description = rs.getString("description");
+	            	String donPct = rs.getString("percentage");
+	            	String goal = rs.getString("goal");
+	            	out.println("<section>" + title + " " + description + " " + donPct + " " + goal + " " + "</section><br />");
 	            }
 	         }
 	         
