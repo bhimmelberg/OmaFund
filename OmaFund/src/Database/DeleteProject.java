@@ -27,32 +27,34 @@ public class DeleteProject extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  PrintWriter out = response.getWriter();
-	  String delProject = request.getParameter("delProject");
+	  
+	  int projectId = 0;
+      while(request.getParameter(projectId + "") == null)
+      {
+    	  projectId++;
+      }
   
 	  response.setContentType("text/html");
 
 	  
       Connection connection = null;
-      DBConnection.getDBConnection();
-      connection = DBConnection.connection;
       try {
-         
-
-    	String insertSql = "DELETE FROM Projects WEHRE title =  ? AND WHERE id = ?";
+    	DBConnection.getDBConnection();
+        connection = DBConnection.connection;
+    	String insertSql = "DELETE FROM Projects WHERE projectId =  ?";
     	PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
-    	preparedStmt.setString(1, delProject);
-    	preparedStmt.setInt(2, DBConnection.getID());
+    	preparedStmt.setInt(1, projectId);
     	preparedStmt.execute();
 
-         
-         out.println("<form action=\"DeleteProject\" method=\"POST\">\r\n" + 
-         		"	\r\n" + 
-         		"		<label for=\"userName\">Project to Delete: </label><input type=\"text\" name=\"delProject\"> <br />\r\n" +  
-         		"		\r\n" + 
-         		"		<input type=\"submit\" value=\"Delete\" />\r\n" + 
-         		"	</form>");
-         preparedStmt.close();
-         connection.close();
+    	out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/YourProjects\" />");
+    	
+//	     out.println("<form action=\"DeleteProject\" method=\"POST\">\r\n" + 
+//	     		"	\r\n" + 
+//	     		"		<label for=\"userName\">Project to Delete: </label><input type=\"text\" name=\"delProject\"> <br />\r\n" +  
+//	     		"		\r\n" + 
+//	     		"		<input type=\"submit\" value=\"Delete\" />\r\n" + 
+//	     		"	</form>");
+	     connection.close();
 
       } catch (Exception e) {
          e.printStackTrace();

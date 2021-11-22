@@ -16,10 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/YourProjects")
-public class YourProjects22 extends HttpServlet {
+public class YourProjects extends HttpServlet {
    private static final long serialVersionUID = 1L;
 
-   public YourProjects22() {
+   public YourProjects() {
       super();
    }
 
@@ -126,11 +126,15 @@ public class YourProjects22 extends HttpServlet {
 
 	            if (userID == theUserID)
 	            {
+	            	int projectId = rs.getInt("projectId");
 	            	String title = rs.getString("title");
 	            	String description = rs.getString("description");
 	            	String donPct = rs.getString("percentage");
 	            	String goal = rs.getString("goal");
 	            	out.println("<section>" + title + " " + description + " " + donPct + " " + goal + " " + "</section><br />");
+	            	out.println("<form action=\"DeleteProject\" method=\"POST\">\r\n" + 
+	            			"				<input type=\"submit\" name=\"" + projectId + "\" value=\"Delete\"/>\r\n" + 
+	            			"			</form>");
 	            }
 	         }
 	         
