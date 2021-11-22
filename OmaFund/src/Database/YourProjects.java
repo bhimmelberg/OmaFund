@@ -97,7 +97,7 @@ public class YourProjects extends HttpServlet {
 	            "<html>\n" + //
 	            "<head><title>" + title + "</title></head>\n" + //
 	            "<body bgcolor=\"#f0f0f0\">\n" + //
-<<<<<<< HEAD
+
 	            "<h1 align=\"center\">" + title + "</h1>\n" +
 	            "<html>\n" + //
      			"<nav>\r\n" + 
@@ -127,17 +127,17 @@ public class YourProjects extends HttpServlet {
 	            if (userID == theUserID)
 	            {
 	            	String description = rs.getString("title");
-	            	out.println("<section>" + description + "</section><br />");
-	            	
+	            	out.print("<section>" + description + "</section><br />");
+	            	out.println("<input type=\"submit\" value=\"Delete\" />\r\n");
 	            }
 	         }
 	         
-	         out.println("<form action=\"DeleteProject\" method=\"POST\">\r\n" + 
+	        /* out.println("<form action=\"DeleteProject\" method=\"POST\">\r\n" + 
 	         		"	\r\n" + 
 	         		"		<label for=\"userName\">Project to Delete: </label><input type=\"text\" name=\"delProject\"> <br />\r\n" +  
 	         		"		\r\n" + 
 	         		"		<input type=\"submit\" value=\"Delete\" />\r\n" + 
-	         		"	</form>");
+	         		"	</form>");*/
 	         preparedStatement.close();
 	         connection.close();
 	      } catch (SQLException se) {
