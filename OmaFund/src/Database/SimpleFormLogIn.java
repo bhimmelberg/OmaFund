@@ -85,7 +85,7 @@ public class SimpleFormLogIn extends HttpServlet {
             }
          }
          
-         if(loggedIn != 1)
+         if(loggedIn == 0)
          {
         	 String error = "Username or Password is Incorrect!";
         	 
