@@ -127,8 +127,7 @@ public class YourProjects extends HttpServlet {
 	            if (userID == theUserID)
 	            {
 	            	String description = rs.getString("title");
-	            	out.print("<section>" + description + "</section><br />");
-	            	out.println("<input type=\"submit\" value=\"Delete\" />\r\n");
+	            	out.println("<section>" + description + "</section><br />");
 	            }
 	         }
 	         
