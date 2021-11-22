@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,51 +26,68 @@ public class SimpleFormSale extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  PrintWriter out = response.getWriter();
-	  //String title = request.getParameter("saleID");
-	  String title = request.getParameter("saleID");
+	  String header = "Project Info:";
       String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
             "transitional//en\">\n"; //
       out.println(docType + //
             "<html>\n" + //
-            "<head><title>" + title + "</title></head>\n" + //
+            "<head><title>" + header + "</title></head>\n" + //
             "<body bgcolor=\"#f0f0f0\">\n" + //
-            "<h1 align=\"center\">" + title + "</h1>\n");
-//      
-//	      Connection connection = null;
-//	      String insertSql = " INSERT INTO UserInfo (username, password, email, first, last, age) values (?, ?, ?, ?, ?, ?)";
-//	
-//	      try {
-//	         DBConnection.getDBConnection();
-//	         connection = DBConnection.connection;
-//	         PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
-//	         preparedStmt.setString(1, userName);
-//	         preparedStmt.setString(2, password);
-//	         preparedStmt.setString(3, email);
-//	         preparedStmt.setString(4, firstName);
-//	         preparedStmt.setString(5, lastName);
-//	         preparedStmt.setInt(6, age);
-//	         
-//	         preparedStmt.execute();
-//	         connection.close();
-//	      } 
-//	      catch (java.sql.SQLIntegrityConstraintViolationException e)
-//	      {
-//	    	  String error = "Error: Username Already Taken";
-//	    	  String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
-//	    	            "transitional//en\">\n";
-//	    	  out.println(docType + //
-//	                  "<html>\n" + //
-//	                  "<head><title>" + error + "</title></head>\n" + //
-//	                  "<body bgcolor=\"#f0f0f0\">\n" + //
-//	                  "<h1 align=\"center\">" + error + "</h1>\n");
-//	    	  out.println("<a href=/OmaFund/signUp.html>Sign Up</a> <br>");
-//	    	  out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
-//	    	  return;
-//	      }
-//	      catch (Exception e) {
-//	         e.printStackTrace();
-//	      }
-//	      out.println("<meta http-equiv =\"refresh\" content=\"0; /OmaFund/logIn.html\" />");
+            "<h1 align=\"center\">" + header + "</h1>\n");
+      
+      //This saleIndex variable is the index of the button they pressed
+      int saleIndex = 0;
+      while(request.getParameter(saleIndex + "") == null)
+      {
+    	  saleIndex++;
+      }
+      
+      Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+	    
+		try {
+	         DBConnection.getDBConnection();
+	         connection = DBConnection.connection;
+	         
+	         String selectSQL = "SELECT * FROM Projects";
+	         preparedStatement = connection.prepareStatement(selectSQL);
+	         ResultSet rs = preparedStatement.executeQuery();
+	         
+	         int index = 0;
+	         while(rs.next())
+	         {
+	        	 if (index == saleIndex)
+	        	 {
+		         String title = rs.getString("title").trim();
+		         String addr1 = rs.getString("address1").trim();
+		         String addr2 = rs.getString("address2").trim();
+		         String desc = rs.getString("description");
+		         out.println("Title: " +  title + "<br />" + "Address: " +  addr1 + " " + addr2 + "<br />"
+		        		 + "Description: " +  desc + "<br />");
+		         break;
+	        	 }
+	        	 index++;
+	         }
+	         
+	         preparedStatement.close();
+	         connection.close();
+	      } catch (SQLException se) {
+	         se.printStackTrace();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         try {
+	            if (preparedStatement != null)
+	               preparedStatement.close();
+	         } catch (SQLException se2) {
+	         }
+	         try {
+	            if (connection != null)
+	               connection.close();
+	         } catch (SQLException se) {
+	            se.printStackTrace();
+	         }
+	      }
       }
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

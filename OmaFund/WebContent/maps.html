@@ -503,20 +503,13 @@
             <h2 class="name">{{title}}</h2>
           </button>
           <div class="address">{{address1}}<br>{{address2}}</div>
-			<form action="SimpleFormSale" method="POST">
-				<input id="saleID" name="saleID" type="hidden" value=locator.selectedLocationIdx />
-    			<input type="submit" value="View Sale" />
-				<script>
-					function getIDValue(){
-						let idVal = document.getElementByID('location-results-section-name').value;
-					}
-				</scipt>
-		    </form>
+			<form action="YourProjects" method="POST">
+				<input type="submit" name={{index}} value="View Sale"/>
+			</form>
           {{#if travelDistanceText}}
             <div class="distance">{{travelDistanceText}}</div>
           {{/if}}
         </li>
-			
       {{/each}}
     </script>
   </head>

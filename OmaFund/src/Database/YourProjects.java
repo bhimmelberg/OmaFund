@@ -36,7 +36,7 @@ public class YourProjects extends HttpServlet {
 	            "<head><title>" + title + "</title></head>\n" + //
 	            "<body bgcolor=\"#f0f0f0\">\n" + //
 	            "<h1 align=\"center\">" + title + "</h1>\n");
-
+	      
 	      Connection connection = null;
 	      PreparedStatement preparedStatement = null;
 	      try {
