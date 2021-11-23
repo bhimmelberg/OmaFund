@@ -1,0 +1,126 @@
+<html>
+<head>
+<style>
+header {
+    background-color:white; 
+    color:black;
+    text-align:center;
+    padding:5px;	 
+}
+nav {
+    background-color:grey;
+    color:black;
+    font-size:30px;
+    text-align:left;
+    padding:1px;
+}
+
+form{
+	display:inline-block;
+}
+
+sectionA {
+    background-color:grey;
+    color:C40000;
+    font-size:30px;
+    font-family: cooper black;
+    font-style: italic;
+    text-align:center;
+    width:550px;
+    padding:5px;
+}
+
+sectionB {
+    background-color:grey;
+    color:black;
+    font-size:20px;
+    font-family: lilyUPC;
+    text-align:center;
+    width:550px;
+    padding:5px;	 	 
+}
+
+sectionC {
+    background-color:grey;
+    color:black;
+    font-size:20px;
+    font-family: lilyUPC;
+    text-align:left;
+    width:550px;
+    padding:5px;	 	 
+}
+
+body {
+	background-color:grey
+}
+
+div.container {
+	  text-align: center;
+      display:inline-block;
+      padding:50px;
+}
+
+</style>
+</head>
+
+<body>
+<header>
+<img src="/OmaFund/images/OmaFundLogo.PNG">
+</header>
+
+<nav>
+	<form style="float: left" action="SimpleFormMaps" method="POST">
+		<input type="submit" value="Back" />
+	</form>
+
+	<form style="float: right" action="/OmaFund/item.html">
+    	<input type="submit" value="Add Item to Sale" />
+	</form>
+</nav>
+
+<sectionA>
+<p>
+--add title here--
+</p>
+</sectionA>
+
+<sectionB>
+	<p>
+	desc: --add desc here--
+	<br>
+	address1: --add address here--
+	<br>
+	address1: --add address here--
+	</p>
+	<p>
+    <img src="/OmaFund/images/goal0.png" height="200" width="200" style="border: #EBEBEB 4px solid"/>
+	</p>
+	<p>
+	xx%
+	</p>
+</sectionB>
+<hr color="black">
+
+<sectionC>
+	<p>--item title--</p>
+	<form style="float: left" action="/OmaFund/item.html">
+	   	<input type="submit" name="itemId" value="View Item" />
+	</form>
+	<br>
+	<br>
+	
+	<p>--item title--</p>
+	<form style="float: left" action="/OmaFund/item.html">
+	   	<input type="submit" name="itemId" value="View Item" />
+	</form>
+	<br>
+	<br>
+	
+	<p>--item title--</p>
+	<form style="float: left" action="/OmaFund/item.html">
+	   	<input type="submit" name="itemId" value="View Item" />
+	</form>
+</sectionC>
+
+</body>
+</html>

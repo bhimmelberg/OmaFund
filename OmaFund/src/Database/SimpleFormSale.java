@@ -23,7 +23,62 @@ public class SimpleFormSale extends HttpServlet {
 	public SimpleFormSale() {
 		super();
 	}
+	
+	private int moneyRaised = 0;
+	private int projectDonationPercentage = 0;
 
+	private String getItemHTMLString(int projectId) {
+		String itemHTMLString = "";
+		
+		Connection connection = null;
+	    PreparedStatement preparedStatement = null;
+		try {
+			 DBConnection.getDBConnection();
+	         connection = DBConnection.connection;
+	         
+	         String selectSQL = "SELECT * FROM Items";
+	         preparedStatement = connection.prepareStatement(selectSQL);
+	         ResultSet rs = preparedStatement.executeQuery();
+	         
+	         while(rs.next())
+	         {
+	        	 if (projectId == rs.getInt("projectId"))
+	        	 {
+		        	 int itemId = rs.getInt("itemId");
+			         String name = rs.getString("name").trim();
+			         boolean sold = (rs.getInt("sold") > 0);
+			         itemHTMLString += "<p>"+ name + "</p>\r\n" + 
+			         		"	<form style=\"float: left\" action=\"SimpleFormItem\" method=\"POST\">\r\n" + 
+			         		"	   	<input type=\"submit\" name=\"" + itemId + "\" value=\"View Item\" />\r\n" + 
+			         		"	</form>\r\n" + 
+			         		"	<br>\r\n" + 
+			         		"	<br>";
+			         if (sold)
+			         {
+			        	 moneyRaised += rs.getInt("price") * (projectDonationPercentage / 100);
+			         }
+	        	 }
+	         }
+		}
+		catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         try {
+	            if (preparedStatement != null)
+	               preparedStatement.close();
+	         } catch (SQLException se2) {
+	         }
+	         try {
+	            if (connection != null)
+	               connection.close();
+	         } catch (SQLException se) {
+	            se.printStackTrace();
+	         }
+	      }
+		
+		return itemHTMLString;
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	  PrintWriter out = response.getWriter();
 	  String header = "Project Info:";
@@ -42,7 +97,7 @@ public class SimpleFormSale extends HttpServlet {
     	  saleIndex++;
       }
       
-      Connection connection = null;
+        Connection connection = null;
 	    PreparedStatement preparedStatement = null;
 	    
 		try {
@@ -62,8 +117,137 @@ public class SimpleFormSale extends HttpServlet {
 		         String addr1 = rs.getString("address1").trim();
 		         String addr2 = rs.getString("address2").trim();
 		         String desc = rs.getString("description");
-		         out.println("Title: " +  title + "<br />" + "Address: " +  addr1 + " " + addr2 + "<br />"
-		        		 + "Description: " +  desc + "<br />");
+		         int projectId = rs.getInt("projectId");
+		         DBConnection.setProjectID(projectId);
+		         System.out.println("Project ID - Sale: " + projectId);
+		         int goal = rs.getInt("goal");
+		         projectDonationPercentage = rs.getInt("percentage");
+		         
+		         String itemHTMLString = getItemHTMLString(projectId);
+		         double goalPercentagePrecise = ((double)moneyRaised / (double)goal) * 100;
+		         int goalPercentage = (int)goalPercentagePrecise;
+		         if (goalPercentage > 100)
+		         {
+		        	 goalPercentage = 100;
+		         }
+		         else if (goalPercentage < 0)
+		         {
+		        	 goalPercentage = 0;
+		         }
+		         int goalPercentageRounded = 5*Math.round(goalPercentage/5);
+		         System.out.println("Goal %: " + goalPercentage);
+		         System.out.println("Goal % rounded: " + goalPercentageRounded);
+		         
+		         out.println("<html>\r\n" + 
+		         		"<head>\r\n" + 
+		         		"<style>\r\n" + 
+		         		"header {\r\n" + 
+		         		"    background-color:white; \r\n" + 
+		         		"    color:black;\r\n" + 
+		         		"    text-align:center;\r\n" + 
+		         		"    padding:5px;	 \r\n" + 
+		         		"}\r\n" + 
+		         		"nav {\r\n" + 
+		         		"    background-color:grey;\r\n" + 
+		         		"    color:black;\r\n" + 
+		         		"    font-size:30px;\r\n" + 
+		         		"    text-align:left;\r\n" + 
+		         		"    padding:1px;\r\n" + 
+		         		"}\r\n" + 
+		         		"\r\n" + 
+		         		"form{\r\n" + 
+		         		"	display:inline-block;\r\n" + 
+		         		"}\r\n" + 
+		         		"\r\n" + 
+		         		"sectionA {\r\n" + 
+		         		"    background-color:grey;\r\n" + 
+		         		"    color:C40000;\r\n" + 
+		         		"    font-size:30px;\r\n" + 
+		         		"    font-family: cooper black;\r\n" + 
+		         		"    font-style: italic;\r\n" + 
+		         		"    text-align:center;\r\n" + 
+		         		"    width:550px;\r\n" + 
+		         		"    padding:5px;\r\n" + 
+		         		"}\r\n" + 
+		         		"\r\n" + 
+		         		"sectionB {\r\n" + 
+		         		"    background-color:grey;\r\n" + 
+		         		"    color:black;\r\n" + 
+		         		"    font-size:20px;\r\n" + 
+		         		"    font-family: lilyUPC;\r\n" + 
+		         		"    text-align:center;\r\n" + 
+		         		"    width:550px;\r\n" + 
+		         		"    padding:5px;	 	 \r\n" + 
+		         		"}\r\n" + 
+		         		"\r\n" + 
+		         		"sectionC {\r\n" + 
+		         		"    background-color:grey;\r\n" + 
+		         		"    color:black;\r\n" + 
+		         		"    font-size:20px;\r\n" + 
+		         		"    font-family: lilyUPC;\r\n" + 
+		         		"    text-align:left;\r\n" + 
+		         		"    width:550px;\r\n" + 
+		         		"    padding:5px;	 	 \r\n" + 
+		         		"}\r\n" + 
+		         		"\r\n" + 
+		         		"body {\r\n" + 
+		         		"	background-color:grey\r\n" + 
+		         		"}\r\n" + 
+		         		"\r\n" + 
+		         		"div.container {\r\n" + 
+		         		"	  text-align: center;\r\n" + 
+		         		"      display:inline-block;\r\n" + 
+		         		"      padding:50px;\r\n" + 
+		         		"}\r\n" + 
+		         		"\r\n" + 
+		         		"</style>\r\n" + 
+		         		"</head>\r\n" + 
+		         		"\r\n" + 
+		         		"<body>\r\n" + 
+		         		"<header>\r\n" + 
+		         		"<img src=\"/OmaFund/images/OmaFundLogo.PNG\">\r\n" + 
+		         		"</header>\r\n" + 
+		         		"\r\n" + 
+		         		"<nav>\r\n" + 
+		         		"	<form style=\"float: left\" action=\"SimpleFormMaps\" method=\"POST\">\r\n" + 
+		         		"		<input type=\"submit\" value=\"Back\" />\r\n" + 
+		         		"	</form>\r\n" + 
+		         		"\r\n" + 
+		         		"	<form style=\"float: right\" action=\"/OmaFund/item.html\">\r\n" + 
+		         		"    	<input type=\"submit\" value=\"Add Item to Sale\" />\r\n" + 
+		         		"	</form>\r\n" + 
+		         		"</nav>\r\n" + 
+		         		"\r\n" + 
+		         		"<sectionA>\r\n" + 
+		         		"<p>\r\n" + 
+		         		title + 
+		         		"</p>\r\n" + 
+		         		"</sectionA>\r\n" + 
+		         		"\r\n" + 
+		         		"<sectionB>\r\n" + 
+		         		"	<p>\r\n" + 
+		         		desc + 
+		         		"	<br>\r\n" + 
+		         		addr1 + 
+		         		"	<br>\r\n" + 
+		         		addr2 + 
+		         		"	</p>\r\n" + 
+		         		"	<p>\r\n" + 
+		         		"    <img src=\"/OmaFund/images/goal" + goalPercentageRounded + ".png\" height=\"200\" width=\"200\" style=\"border: #EBEBEB 4px solid\"/>\r\n" + 
+		         		"	</p>\r\n" + 
+		         		"	<p>\r\n" + 
+		         		"	"+ goalPercentage + "%\r\n" + 
+		         		"	</p>\r\n" + 
+		         		"</sectionB>\r\n" + 
+		         		"<hr color=\"black\">\r\n" + 
+		         		"\r\n" + 
+		         		"<sectionC>\r\n" + 
+		         		itemHTMLString +
+		         		"</sectionC>\r\n" + 
+		         		"\r\n" + 
+		         		"</body>\r\n" + 
+		         		"</html>");
+		         
 		         break;
 	        	 }
 	        	 index++;

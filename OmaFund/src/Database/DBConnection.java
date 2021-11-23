@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DBConnection {
    public static Connection connection = null;
    private static int userID = -1;
+   private static int projectID = -1;
    private static String omaFundUserName = "";
 
    public static void getDBConnection() {
@@ -65,6 +66,14 @@ public class DBConnection {
    
    static int getID() {
 	   return userID;
+   }
+   
+   static void setProjectID(int id) {
+	   projectID = id;
+   }
+   
+   static int getProjectID() {
+	   return projectID;
    }
    
    static void setOmaFundUserName(String name) {
