@@ -29,6 +29,7 @@ public class SimpleFormLogIn extends HttpServlet {
    }
 
    void search(String userNameEntry, String passwordEntry, HttpServletResponse response) throws IOException {
+	  int loggedIn = 0;
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
       String title = "Database Result";
@@ -79,18 +80,28 @@ public class SimpleFormLogIn extends HttpServlet {
             {
             	//logged in
             	System.out.println("You Are Logged In!");
+<<<<<<< HEAD
             	out.println("<meta http-equiv =\"refresh\" content=\"0.1; /OmaFund/youIn.html\" />");
+=======
+            	out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/youIn.html\" />");
+            	loggedIn = 1;
+>>>>>>> branch 'master' of git@github.com:bhimmelberg/OmaFund.git
             }
          }
-         String error = "Username or Password is Incorrect!";
-    	 
-         out.println(docType + //
-               "<html>\n" + //
-               "<head><title>" + error + "</title></head>\n" + //
-               "<body bgcolor=\"#f0f0f0\">\n" + //
-               "<h1 align=\"center\">" + error + "</h1>\n");
-         out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
-         out.println("</body></html>");
+         
+         if(loggedIn == 0)
+         {
+        	 String error = "Username or Password is Incorrect!";
+        	 
+             out.println(docType + //
+                   "<html>\n" + //
+                   "<head><title>" + error + "</title></head>\n" + //
+                   "<body bgcolor=\"#f0f0f0\">\n" + //
+                   "<h1 align=\"center\">" + error + "</h1>\n");
+             out.println("<a href=/OmaFund/logIn.html>Log In</a> <br>");
+             out.println("</body></html>");
+         }
+         
          rs.close();
          preparedStatement.close();
          connection.close();

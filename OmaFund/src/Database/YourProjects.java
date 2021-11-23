@@ -131,7 +131,7 @@ public class YourProjects extends HttpServlet {
 	            	String description = rs.getString("description");
 	            	String donPct = rs.getString("percentage");
 	            	String goal = rs.getString("goal");
-	            	out.println("<section>" + title + " " + description + " " + donPct + " " + goal + " " + "</section><br />");
+	            	out.println("<section>" + "Project: " + title + "   Donation Percentage: " + donPct + "%   Goal: " + goal + " " + "</section><br />");
 	            	out.println("<form action=\"DeleteProject\" method=\"POST\">\r\n" + 
 	            			"				<input type=\"submit\" name=\"" + projectId + "\" value=\"Delete\"/>\r\n" + 
 	            			"			</form>");
