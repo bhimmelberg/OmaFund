@@ -39,7 +39,7 @@ public class SimpleFormSale extends HttpServlet {
 	         String selectSQL = "SELECT * FROM Items";
 	         preparedStatement = connection.prepareStatement(selectSQL);
 	         ResultSet rs = preparedStatement.executeQuery();
-	         
+	         moneyRaised= 0;
 	         while(rs.next())
 	         {
 	        	 if (projectId == rs.getInt("projectId"))
@@ -48,14 +48,16 @@ public class SimpleFormSale extends HttpServlet {
 			         String name = rs.getString("name").trim();
 			         boolean sold = (rs.getInt("sold") > 0);
 			         itemHTMLString += "<p>"+ name + "</p>\r\n" + 
-			         		"	<form style=\"float: left\" action=\"SimpleFormItem\" method=\"POST\">\r\n" + 
+			         		"	<form style=\"float: left\" action=\"SimpleFormDisplayItem\" method=\"POST\">\r\n" + 
 			         		"	   	<input type=\"submit\" name=\"" + itemId + "\" value=\"View Item\" />\r\n" + 
 			         		"	</form>\r\n" + 
 			         		"	<br>\r\n" + 
 			         		"	<br>";
+			         System.out.println("Item ID:" + itemId);
 			         if (sold)
 			         {
-			        	 moneyRaised += rs.getInt("price") * (projectDonationPercentage / 100);
+			        	 moneyRaised += rs.getInt("price") * ((double)projectDonationPercentage / 100);
+			        	 System.out.println("Donation Percentage: " + projectDonationPercentage);
 			         }
 	        	 }
 	         }
@@ -116,15 +118,18 @@ public class SimpleFormSale extends HttpServlet {
 		         String title = rs.getString("title").trim();
 		         String addr1 = rs.getString("address1").trim();
 		         String addr2 = rs.getString("address2").trim();
+		         int goal = rs.getInt("goal");
 		         String desc = rs.getString("description");
 		         int projectId = rs.getInt("projectId");
 		         DBConnection.setProjectID(projectId);
 		         System.out.println("Project ID - Sale: " + projectId);
-		         int goal = rs.getInt("goal");
 		         projectDonationPercentage = rs.getInt("percentage");
 		         
 		         String itemHTMLString = getItemHTMLString(projectId);
 		         double goalPercentagePrecise = ((double)moneyRaised / (double)goal) * 100;
+		         System.out.println("Money Raised: " + moneyRaised);
+		         System.out.println("Goal: " + goal);
+		         System.out.println("Goal % Precise: " + goalPercentagePrecise);
 		         int goalPercentage = (int)goalPercentagePrecise;
 		         if (goalPercentage > 100)
 		         {
@@ -230,13 +235,15 @@ public class SimpleFormSale extends HttpServlet {
 		         		"	<br>\r\n" + 
 		         		addr1 + 
 		         		"	<br>\r\n" + 
-		         		addr2 + 
+		         		addr2 + "<br><br>" +
+		         		"Each Item Will Contribute " + projectDonationPercentage + "% of their Profits" + "<br>" +
+		         		"Goal: $" + goal +
 		         		"	</p>\r\n" + 
 		         		"	<p>\r\n" + 
 		         		"    <img src=\"/OmaFund/images/goal" + goalPercentageRounded + ".png\" height=\"200\" width=\"200\" style=\"border: #EBEBEB 4px solid\"/>\r\n" + 
 		         		"	</p>\r\n" + 
 		         		"	<p>\r\n" + 
-		         		"	"+ goalPercentage + "%\r\n" + 
+		         		"	"+ "Currently at: " +goalPercentage + "%\r\n" + 
 		         		"	</p>\r\n" + 
 		         		"</sectionB>\r\n" + 
 		         		"<hr color=\"black\">\r\n" + 

@@ -67,6 +67,8 @@ public class SimpleFormItem extends HttpServlet {
 	         preparedStmt.setString(4, picture);
 	         preparedStmt.setInt(5, DBConnection.getID());
 	         preparedStmt.setInt(6, DBConnection.getProjectID());
+	         System.out.println("User ID: " + DBConnection.getID());
+	         System.out.println("Project ID: " + DBConnection.getProjectID());
 	         
 	         preparedStmt.execute();
 	         connection.close();
@@ -74,7 +76,8 @@ public class SimpleFormItem extends HttpServlet {
 	      catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/youIn.html\" />");
+	      out.println("<meta http-equiv =\"refresh\" content=\"0.1; /OmaFund/youIn.html\" />");
+      	out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/youIn.html\" />");
       }
    }
 

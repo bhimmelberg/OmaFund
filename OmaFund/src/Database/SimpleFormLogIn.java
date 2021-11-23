@@ -32,7 +32,7 @@ public class SimpleFormLogIn extends HttpServlet {
 	  int loggedIn = 0;
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();
-      String title = "Database Result";
+      String title = "Log In";
       String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
             "transitional//en\">\n"; //
       out.println(docType + //
@@ -80,12 +80,9 @@ public class SimpleFormLogIn extends HttpServlet {
             {
             	//logged in
             	System.out.println("You Are Logged In!");
-<<<<<<< HEAD
             	out.println("<meta http-equiv =\"refresh\" content=\"0.1; /OmaFund/youIn.html\" />");
-=======
             	out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/youIn.html\" />");
             	loggedIn = 1;
->>>>>>> branch 'master' of git@github.com:bhimmelberg/OmaFund.git
             }
          }
          
