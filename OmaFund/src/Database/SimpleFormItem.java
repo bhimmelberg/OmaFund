@@ -37,18 +37,21 @@ public class SimpleFormItem extends HttpServlet {
     	  price = 0;
       }
       
+      String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
+	            "transitional//en\">\n";
+      String error = "";
+	    out.println(docType + //
+	          "<html>\n" + //
+	          "<head><title>" + error + "</title></head>\n" + //
+	          "<body bgcolor=\"#f0f0f0\">\n" + //
+	          "<h1 align=\"center\">" + error + "</h1>\n");
+      
       
       if (name.equals("") || description.equals("") || price == 0)
       {
-    	  String error = "Information Cannot Be Empty!";
     	  
-    	  String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
-    	            "transitional//en\">\n";
-          out.println(docType + //
-                "<html>\n" + //
-                "<head><title>" + error + "</title></head>\n" + //
-                "<body bgcolor=\"#f0f0f0\">\n" + //
-                "<h1 align=\"center\">" + error + "</h1>\n");
+    	  out.println("Information Cannot Be Empty!");
+    	  
           out.println("<a href=/OmaFund/home.html>Home</a> <br>");
           out.println("<a href=/OmaFund/signUp.html>Sign Up</a> <br>");
       }
@@ -76,8 +79,8 @@ public class SimpleFormItem extends HttpServlet {
 	      catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      out.println("<meta http-equiv =\"refresh\" content=\"0.1; /OmaFund/youIn.html\" />");
-      	out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/youIn.html\" />");
+	      out.println("Your Item Has Been Added! <br>");
+	      out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/youIn.html\" />");
       }
    }
 

@@ -80,9 +80,17 @@ public class SimpleFormLogIn extends HttpServlet {
             {
             	//logged in
             	System.out.println("You Are Logged In!");
-            	out.println("<meta http-equiv =\"refresh\" content=\"0.1; /OmaFund/youIn.html\" />");
-            	out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/youIn.html\" />");
             	loggedIn = 1;
+            	String error2 = "";
+          	  
+          	  String docType2 = "<!doctype html public \"-//w3c//dtd html 4.0 " + //
+          	            "transitional//en\">\n";
+                out.println(docType2 + //
+                      "<html>\n" + //
+                      "<head><title>" + error2 + "</title></head>\n" + //
+                      "<body bgcolor=\"#f0f0f0\">\n" + //
+                      "<h1 align=\"center\">" + error2 + "</h1>\n");
+      	      out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/youIn.html\" />");
             }
          }
          
