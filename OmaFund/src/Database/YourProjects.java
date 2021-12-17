@@ -93,23 +93,6 @@ public class YourProjects extends HttpServlet {
      			"</form>\r\n" + 
      			"</nav>");
 	      
-	     /* out.println(docType + //
-	            "<html>\n" + //
-	            "<head><title>" + title + "</title></head>\n" + //
-	            "<body bgcolor=\"#f0f0f0\">\n" + //
-
-	            "<h1 align=\"center\">" + title + "</h1>\n" +
-	            "<html>\n" + //
-     			"<nav>\r\n" + 
-     			"\r\n" + 
-     			"<form action=\"/OmaFund/youIn.html\">\r\n" + 
-     			"    <input type=\"submit\" value=\"Home\" />\r\n" + 
-     			"</form>\r\n" + 
-     			"</nav>");*/
-
-	         //   "<h1 align=\"center\">" + title + "</h1>\n");
-	      
-
 	      Connection connection = null;
 	      PreparedStatement preparedStatement = null;
 	      try {

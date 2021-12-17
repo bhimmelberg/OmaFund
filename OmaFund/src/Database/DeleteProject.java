@@ -41,19 +41,16 @@ public class DeleteProject extends HttpServlet {
       try {
     	DBConnection.getDBConnection();
         connection = DBConnection.connection;
+        String editSql = "SET FOREIGN_KEY_CHECKS=0";
     	String insertSql = "DELETE FROM Projects WHERE projectId =  ?";
     	PreparedStatement preparedStmt = connection.prepareStatement(insertSql);
+    	PreparedStatement editStmt = connection.prepareStatement(editSql);
     	preparedStmt.setInt(1, projectId);
+    	editStmt.execute();
     	preparedStmt.execute();
 
     	out.println("<meta http-equiv =\"refresh\" content=\"0.5; /OmaFund/YourProjects\" />");
     	
-//	     out.println("<form action=\"DeleteProject\" method=\"POST\">\r\n" + 
-//	     		"	\r\n" + 
-//	     		"		<label for=\"userName\">Project to Delete: </label><input type=\"text\" name=\"delProject\"> <br />\r\n" +  
-//	     		"		\r\n" + 
-//	     		"		<input type=\"submit\" value=\"Delete\" />\r\n" + 
-//	     		"	</form>");
 	     connection.close();
 
       } catch (Exception e) {
